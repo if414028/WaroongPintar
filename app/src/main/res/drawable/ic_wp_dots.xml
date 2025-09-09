@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="200dp"
+    android:viewportWidth="42"
+    android:viewportHeight="48">
+
+    <!-- transparansi lembut -->
+    <group android:alpha="0.35">
+        <!-- X positions (7 kolom): 3, 9, 15, 21, 27, 33, 39 -->
+        <!-- radius kolom: 0.7, 1.2, 1.8, 2.4, 1.8, 1.2, 0.7 -->
+        <!-- Y rows (6 baris): 4, 12, 20, 28, 36, 44 -->
+        <!-- radius baris:  r1=0.7  r2=1.2  r3=2.4  r4=2.4  r5=1.2  r6=0.7
+             Ukuran final = min(radiusKolom, radiusBaris) agar tengah paling besar,
+             pinggir mengecil -->
+
+        <!-- helper: Mx,y aR,R 0 1,0 0.001,0  (lingkaran) -->
+
+        <!-- Row 1 (kecil, y=4) -->
+
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,4  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,4 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,4 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,4 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,4 a0.7,0.7 0 1,0 0.001,0Z" />
+
+
+        <!-- Row 2 (sedang, y=12) -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M3,12  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,12  a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,12 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,12 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,12 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,12 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M39,12 a0.7,0.7 0 1,0 0.001,0Z" />
+
+        <!-- Row 3 (besar, y=20) -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M3,20  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,20  a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,20 a1.8,1.8 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,20 a2.4,2.4 0 1,0 0.001,0Z" /> <!-- pusat -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,20 a1.8,1.8 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,20 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M39,20 a0.7,0.7 0 1,0 0.001,0Z" />
+
+        <!-- Row 4 (besar, y=28) -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M3,28  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,28  a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,28 a1.8,1.8 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,28 a2.4,2.4 0 1,0 0.001,0Z" /> <!-- pusat -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,28 a1.8,1.8 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,28 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M39,28 a0.7,0.7 0 1,0 0.001,0Z" />
+
+        <!-- Row 5 (sedang, y=36) -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M3,36  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,36  a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,36 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,36 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,36 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,36 a1.2,1.2 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M39,36 a0.7,0.7 0 1,0 0.001,0Z" />
+
+        <!-- Row 6 (kecil, y=44) -->
+
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M9,44  a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M15,44 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M21,44 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M27,44 a0.7,0.7 0 1,0 0.001,0Z" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M33,44 a0.7,0.7 0 1,0 0.001,0Z" />
+
+    </group>
+</vector>
