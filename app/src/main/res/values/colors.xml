@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- === Brand / Core === -->
+    <!-- PRIMARY / DARK BLUE -->
+    <color name="wp_primary">#262C3A</color>
+    <color name="wp_primaryDark">#1B2130</color>
+    <color name="wp_onPrimary">#FFFFFF</color>
+    <color name="wp_onPrimary_70">#B3FFFFFF</color>
+
+    <!-- INFO / BLUE (aksen utama UI, tombol, link) -->
+    <color name="wp_info">#2FA7F9</color>
+    <color name="wp_onInfo">#FFFFFF</color>
+
+    <!-- PRIMARY / WHITE -->
+    <color name="wp_white">#FFFFFF</color>
+
+    <!-- === Accents / Status === -->
+    <!-- ACCENT / RED -->
+    <color name="wp_error">#E74C3C</color>
+    <color name="wp_onError">#FFFFFF</color>
+
+    <!-- ACCENT / GREEN -->
+    <color name="wp_success">#43B049</color>
+    <color name="wp_onSuccess">#FFFFFF</color>
+
+    <!-- WARNING / YELLOW -->
+    <color name="wp_warning">#F9C418</color>
+    <color name="wp_onWarning">#111111</color>
+
+    <!-- === Neutrals === -->
+    <!-- NEUTRAL / LIGHT GRAY -->
+    <color name="wp_background">#F2F3F5</color>   <!-- app bg -->
+    <color name="wp_surface">#FFFFFF</color>      <!-- cards, sheets -->
+    <color name="wp_divider">#E0E2E6</color>
+
+    <!-- NEUTRAL / GRAY -->
+    <color name="wp_stroke">#B3B7BF</color>
+
+    <!-- NEUTRAL / DARK TEXT -->
+    <color name="wp_textPrimary">#1A1B1E</color>
+    <color name="wp_textSecondary">#6B7280</color>
+
+    <!-- === Gradients / Buttons (pakai warna dari palet) === -->
+    <!-- Panel kiri / header gradient: Info Blue -> Dark Blue -->
+    <color name="wp_gradientStart">#47A5D9</color>
+    <color name="wp_gradientEnd">#0C3997</color>
+
+    <!-- Tombol primer gradient: Info Blue -> Dark Blue -->
+    <color name="wp_buttonStart">#3F72F5</color>
+    <color name="wp_buttonEnd">#64A2F7</color>
 </resources>

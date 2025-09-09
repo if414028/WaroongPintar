@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Regular (TTF) -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/proximanova_regular" />
+
+    <!-- Bold (OTF) -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="700"
+        app:font="@font/proximanova_bold" />
+
+    <!-- Light (OTF) -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="300"
+        app:font="@font/proximanova_light" />
+
+    <!-- Black (TTF) -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="900"
+        app:font="@font/proximanova_black" />
+
+</font-family>
