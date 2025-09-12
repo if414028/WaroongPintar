@@ -120,7 +120,7 @@
                     android:fontFamily="@font/proxima_nova"
                     android:text="Masuk"
                     android:textColor="@color/wp_textPrimary"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
 
                 <!-- Username -->
@@ -137,7 +137,7 @@
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_8ssp" />
 
                 <!-- Password -->
                 <EditText
@@ -153,7 +153,7 @@
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_8ssp" />
 
                 <!-- Ingat saya + Lupa kata sandi -->
                 <LinearLayout
@@ -204,7 +204,7 @@
                     android:padding="@dimen/_4sdp"
                     android:text="Masuk"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_8ssp"
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:rippleColor="@android:color/white" />

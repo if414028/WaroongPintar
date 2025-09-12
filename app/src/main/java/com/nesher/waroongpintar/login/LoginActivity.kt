@@ -1,5 +1,6 @@
 package com.nesher.waroongpintar.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.nesher.waroongpintar.R
+import com.nesher.waroongpintar.dashboard.MainActivity
 import com.nesher.waroongpintar.databinding.ActivityLoginBinding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -54,6 +56,11 @@ class LoginActivity : AppCompatActivity() {
                     backPressedOnce = false
                 }
             }
+        }
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

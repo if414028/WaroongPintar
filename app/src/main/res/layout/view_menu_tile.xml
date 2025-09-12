@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@drawable/bg_menu_tile"
-    android:padding="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/menuIcon"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@drawable/company_logo"
-        android:padding="12dp"
-        app:shapeAppearanceOverlay="@style/Shape.Round.XL"
-        app:backgroundTint="@color/wp_primary"
-        android:tint="@android:color/white" />
+        android:layout_width="@dimen/_64sdp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/bg_metric_gradient"
+        android:padding="@dimen/_16sdp"
+        android:src="@drawable/ic_home"
+        app:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/menuTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/proximanova_bold"
         android:text="Katalog Produk"
-        android:textColor="@color/wp_on_surface"
-        android:textSize="12sp"
-        android:layout_marginTop="10dp" />
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/_8ssp" />
 </LinearLayout>
