@@ -4,4 +4,9 @@
     <string name="total_revenue">Total Pendapatan</string>
     <string name="total_orders">Total Pesanan</string>
     <string name="total_products">Total Produk</string>
+
+    <!-- Menu -->
+    <string name="product_catalogue">Katalog Produk</string>
+    <string name="point_of_sales">Point of Sales</string>
+    <string name="orders">Pesanan</string>
 </resources>
