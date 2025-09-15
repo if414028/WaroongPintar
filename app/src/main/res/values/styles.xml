@@ -33,4 +33,13 @@
         <!-- ukuran font opsional -->
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="Shape.Round.Full" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="Shape.Round.XL" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
 </resources>

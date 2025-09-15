@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaroongPintar">
         <activity
+            android:name=".productcatalogue.ProductCatalogueActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity

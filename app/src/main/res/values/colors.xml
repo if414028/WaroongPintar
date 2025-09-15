@@ -48,4 +48,11 @@
     <!-- Tombol primer gradient: Info Blue -> Dark Blue -->
     <color name="wp_buttonStart">#3F72F5</color>
     <color name="wp_buttonEnd">#64A2F7</color>
+
+    <color name="wp_on_surface">#1B1B1F</color>
+    <color name="wp_outline">#E0E3E7</color>
+    <color name="wp_chip_bg">#F2F6FF</color>
+    <color name="wp_primary_container">#E6EEFF</color>
+
+    <color name="text_black">#1A1A1A</color>
 </resources>
