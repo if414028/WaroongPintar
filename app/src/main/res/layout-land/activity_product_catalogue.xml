@@ -8,7 +8,7 @@
 
         <!-- Header: greeting + actions -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/headerCard"
+            android:id="@+id/header_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/_16sdp"
@@ -29,7 +29,7 @@
 
             <!-- Home icon circle -->
             <FrameLayout
-                android:id="@+id/icHome"
+                android:id="@+id/ic_home"
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
@@ -47,9 +47,8 @@
 
             </FrameLayout>
 
-
             <TextView
-                android:id="@+id/tvGreeting"
+                android:id="@+id/tv_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
@@ -57,22 +56,22 @@
                 android:text="@string/product_catalogue"
                 android:textColor="@color/wp_on_surface"
                 android:textSize="@dimen/_10ssp"
-                app:layout_constraintBottom_toBottomOf="@id/icHome"
+                app:layout_constraintBottom_toBottomOf="@id/ic_home"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/icHome"
-                app:layout_constraintTop_toTopOf="@id/icHome" />
+                app:layout_constraintStart_toEndOf="@id/ic_home"
+                app:layout_constraintTop_toTopOf="@id/ic_home" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
-            android:id="@+id/etSearch"
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             android:background="@drawable/bg_edittext_outline"
             android:fontFamily="@font/proxima_nova"
-            android:hint="Cari Produk"
+            android:hint="@string/search_product"
             android:inputType="text"
             android:paddingStart="@dimen/_12sdp"
             android:paddingTop="@dimen/_8sdp"
@@ -80,7 +79,17 @@
             android:paddingBottom="@dimen/_8sdp"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerCard" />
+            app:layout_constraintTop_toBottomOf="@id/header_card" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingTop="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
