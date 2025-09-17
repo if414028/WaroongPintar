@@ -9,4 +9,6 @@
     <string name="product_catalogue">Katalog Produk</string>
     <string name="point_of_sales">Point of Sales</string>
     <string name="orders">Pesanan</string>
+
+    <string name="search_product">Cari Produk</string>
 </resources>
