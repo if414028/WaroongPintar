@@ -29,7 +29,7 @@
                     android:id="@+id/icHome"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_metric_gradient"
+                    android:background="@drawable/bg_icon_gradient"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
