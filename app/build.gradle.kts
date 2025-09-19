@@ -18,6 +18,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SUPABASE_URL", "\"https://kqwodbifrlttalecablj.supabase.co\"")
+        buildConfigField("String", "SUPABASE_ANON_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtxd29kYmlmcmx0dGFsZWNhYmxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MDMzOTksImV4cCI6MjA3Mjk3OTM5OX0.ttQ2bTiHd3sGpM7nTjbT4c44liQlemLYYvihmU3sGHE\"")
     }
 
     buildTypes {
@@ -30,6 +33,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -39,6 +43,7 @@ android {
     buildFeatures {
         compose = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -100,4 +105,16 @@ dependencies {
     // Intuit SDP & SSP
     implementation(libs.intuit.sdp)
     implementation(libs.intuit.ssp)
+
+    // Supabase
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.supabase.auth)
+    implementation(libs.supabase.postgrest)
+
+    // Ktor client engine (pilih satu)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.okhttp)
+
+    // Desugar (karena minSdk 24, bukan 26)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 }

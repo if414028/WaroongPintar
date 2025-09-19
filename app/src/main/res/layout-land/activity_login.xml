@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.nesher.waroongpintar.login.LoginViewModel" />
@@ -137,6 +139,7 @@
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
+                    android:text="@={vm.email}"
                     android:textSize="@dimen/_8ssp" />
 
                 <!-- Password -->
@@ -153,6 +156,7 @@
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
+                    android:text="@={vm.password}"
                     android:textSize="@dimen/_8ssp" />
 
                 <!-- Ingat saya + Lupa kata sandi -->
@@ -200,7 +204,9 @@
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/bg_button_gradient"
                     android:elevation="@dimen/_4sdp"
+                    android:enabled="@{vm.loading ? false : true}"
                     android:fontFamily="@font/proxima_nova"
+                    android:onClick="@{() -> vm.onLoginClicked()}"
                     android:padding="@dimen/_4sdp"
                     android:text="Masuk"
                     android:textColor="@android:color/white"
@@ -208,6 +214,14 @@
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:rippleColor="@android:color/white" />
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
         </ScrollView>

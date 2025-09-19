@@ -30,9 +30,27 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding.vm = viewModel
+        binding.lifecycleOwner = this
 
         setupLayout()
+        observeVm()
     }
+
+    private fun observeVm() {
+        viewModel.success.observe(this) { ok ->
+            if (ok == true) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+        viewModel.error.observe(this) { msg ->
+            msg?.let {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun setupLayout() {
         //callback when back pressed
@@ -56,11 +74,6 @@ class LoginActivity : AppCompatActivity() {
                     backPressedOnce = false
                 }
             }
-        }
-
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
         }
     }
 }
