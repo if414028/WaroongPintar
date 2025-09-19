@@ -113,7 +113,7 @@ dependencies {
 
     // Ktor client engine (pilih satu)
     implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.okhttp)
+    //implementation(libs.ktor.client.okhttp)
 
     // Desugar (karena minSdk 24, bukan 26)
     coreLibraryDesugaring(libs.desugar.jdk.libs)

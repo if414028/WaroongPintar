@@ -41,8 +41,8 @@ intuit_sdp = "1.1.1"
 
 # Supabase
 supabase = "3.2.3" # check newest version on GitHub: https://github.com/supabase-community/supabase-kt
-ktor = "2.3.4"
-desugar = "2.0.4"
+ktor = "3.3.0"
+desugar = "2.1.5"
 
 
 [libraries]
