@@ -10,7 +10,7 @@ import io.github.jan.supabase.auth.user.UserSession
  * Auth repository untuk Supabase v3.
  * Gunakan dari ViewModel dengan coroutine (viewModelScope).
  */
-class AuthRepository(private val client: SupabaseClient = SupabaseClientProvider.client) {
+class AuthRepository(private val client: SupabaseClient) {
 
     /** Login email + password (v3) */
     suspend fun signIn(email: String, password: String): Result<UserSession?> = runCatching {
