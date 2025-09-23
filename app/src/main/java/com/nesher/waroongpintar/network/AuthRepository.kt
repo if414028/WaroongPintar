@@ -51,7 +51,8 @@ class AuthRepository(private val client: SupabaseClient) {
 
     /** Logout */
     suspend fun signOut(): Result<Unit> = runCatching {
-        client.auth.signOut()
+        client.auth.signOut()   // revoke & hapus session lokal
+        Unit
     }
 
     /** Helpers */

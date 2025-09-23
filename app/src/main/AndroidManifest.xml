@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaroongPintar">
         <activity
+            android:name=".profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".productcatalogue.ProductCatalogueActivity"
             android:exported="false" />
         <activity

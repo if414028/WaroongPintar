@@ -9,6 +9,7 @@
 
     <!-- INFO / BLUE (aksen utama UI, tombol, link) -->
     <color name="wp_info">#2FA7F9</color>
+    <color name="wp_info_light">#EAF1F8</color>
     <color name="wp_onInfo">#FFFFFF</color>
 
     <!-- PRIMARY / WHITE -->
@@ -16,7 +17,7 @@
 
     <!-- === Accents / Status === -->
     <!-- ACCENT / RED -->
-    <color name="wp_error">#E74C3C</color>
+    <color name="wp_error">#E94F3C</color>
     <color name="wp_onError">#FFFFFF</color>
 
     <!-- ACCENT / GREEN -->
@@ -37,13 +38,15 @@
     <color name="wp_stroke">#B3B7BF</color>
 
     <!-- NEUTRAL / DARK TEXT -->
-    <color name="wp_textPrimary">#1A1B1E</color>
+    <color name="wp_textPrimary">#1A1A1A</color>
     <color name="wp_textSecondary">#6B7280</color>
 
     <!-- === Gradients / Buttons (pakai warna dari palet) === -->
     <!-- Panel kiri / header gradient: Info Blue -> Dark Blue -->
     <color name="wp_gradientStart">#47A5D9</color>
     <color name="wp_gradientEnd">#0C3997</color>
+    <color name="wp_gradientErrorStart">#E94F3C</color>
+    <color name="wp_gradientErrorEnd">#F78CA0</color>
 
     <!-- Tombol primer gradient: Info Blue -> Dark Blue -->
     <color name="wp_buttonStart">#3F72F5</color>
