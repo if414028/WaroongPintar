@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.nesher.waroongpintar.login.LoginViewModel" />
@@ -104,7 +106,7 @@
 
                 <!-- Company Logo -->
                 <ImageView
-                    android:id="@+id/companyLogo"
+                    android:id="@+id/ic_company_logo"
                     android:layout_width="@dimen/_56sdp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -120,12 +122,12 @@
                     android:fontFamily="@font/proxima_nova"
                     android:text="Masuk"
                     android:textColor="@color/wp_textPrimary"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
 
                 <!-- Username -->
                 <EditText
-                    android:id="@+id/etUsername"
+                    android:id="@+id/et_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
@@ -137,23 +139,40 @@
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
-                    android:textSize="@dimen/_10ssp" />
+                    android:text="@={vm.email}"
+                    android:textSize="@dimen/_8ssp" />
 
                 <!-- Password -->
-                <EditText
-                    android:id="@+id/etPassword"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/bg_edittext_outline"
-                    android:fontFamily="@font/proxima_nova"
-                    android:hint="password"
-                    android:inputType="textPassword"
-                    android:paddingStart="@dimen/_12sdp"
-                    android:paddingTop="@dimen/_8sdp"
-                    android:paddingEnd="@dimen/_12sdp"
-                    android:paddingBottom="@dimen/_8sdp"
-                    android:textSize="@dimen/_10ssp" />
+                    android:layout_marginTop="@dimen/_16sdp">
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_edittext_outline"
+                        android:fontFamily="@font/proxima_nova"
+                        android:hint="password"
+                        android:inputType="textPassword"
+                        android:paddingStart="@dimen/_12sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@={vm.password}"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <ImageView
+                        android:id="@+id/ic_toggle_password"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_hide" />
+
+                </FrameLayout>
 
                 <!-- Ingat saya + Lupa kata sandi -->
                 <LinearLayout
@@ -164,7 +183,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.checkbox.MaterialCheckBox
-                        android:id="@+id/cbRemember"
+                        android:id="@+id/cb_remember"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova"
@@ -173,7 +192,7 @@
                         android:textSize="@dimen/_8ssp" />
 
                     <TextView
-                        android:id="@+id/tvForgot"
+                        android:id="@+id/tv_forgot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -181,7 +200,7 @@
                         android:textSize="@dimen/_12ssp" />
 
                     <TextView
-                        android:id="@+id/btnForgot"
+                        android:id="@+id/btn_forgot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proxima_nova"
@@ -194,20 +213,29 @@
 
                 <!-- Tombol Masuk -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/bg_button_gradient"
                     android:elevation="@dimen/_4sdp"
+                    android:enabled="@{vm.loading ? false : true}"
                     android:fontFamily="@font/proxima_nova"
                     android:padding="@dimen/_4sdp"
                     android:text="Masuk"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_8ssp"
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:rippleColor="@android:color/white" />
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
         </ScrollView>

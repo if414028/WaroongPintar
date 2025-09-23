@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="0dp"
-    app:shapeAppearance="@style/Shape.Rounded.XL"
+    app:shapeAppearance="@style/Shape.Round.XL"
     app:strokeColor="@color/wp_info"
     app:strokeWidth="1dp">
 
