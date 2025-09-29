@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Profiles(
+data class Profile(
     val id: String,
     @SerialName("user_name") val userName: String? = null,
     @SerialName("user_fullname") val userFullname: String? = null,

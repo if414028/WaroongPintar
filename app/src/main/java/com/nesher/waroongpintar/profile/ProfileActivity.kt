@@ -67,6 +67,18 @@ class ProfileActivity : AppCompatActivity() {
             binding.tvOwnerNameValue.text = p?.fullName ?: "-"
             binding.tvPhoneValue.text = p?.phone ?: "-"
         }
+
+        viewModel.subscription.observe(this) { s ->
+            if (s != null) {
+                binding.tvSubStatus.text = s.statusText
+                binding.chipPlan.text = s.planLabel
+                binding.tvNextBilling.text = "Berikutnya: ${s.nextBillingLabel}"
+            } else {
+                binding.tvSubStatus.text = "Belum berlangganan"
+                binding.chipPlan.text = "Gratis"
+                binding.tvNextBilling.text = "Berikutnya: -"
+            }
+        }
     }
 
     private fun goToLoginAndClearBackstack() {
