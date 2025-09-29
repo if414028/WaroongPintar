@@ -1,10 +1,13 @@
 package com.nesher.waroongpintar.network
 
+import com.nesher.waroongpintar.model.Profiles
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.user.UserInfo
 import io.github.jan.supabase.auth.user.UserSession
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Columns
 
 /**
  * Auth repository untuk Supabase v3.
@@ -53,6 +56,25 @@ class AuthRepository(private val client: SupabaseClient) {
     suspend fun signOut(): Result<Unit> = runCatching {
         client.auth.signOut()   // revoke & hapus session lokal
         Unit
+    }
+
+    /** Fetch Profile data **/
+    suspend fun fetchMyProfileWithStore(): Result<Profiles> = runCatching {
+        val user = client.auth.currentUserOrNull() ?: error("Belum login")
+
+        client.postgrest["profiles"].select(
+            columns = Columns.raw(
+                """
+                id,user_name,user_fullname,email,phone,is_active,
+                store_users(
+                    is_primary,
+                    stores(id,store_name,store_address)
+                )
+            """.trimIndent()
+            )
+        ) {
+            filter { eq("id", user.id) }
+        }.decodeSingle<Profiles>()
     }
 
     /** Helpers */

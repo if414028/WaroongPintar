@@ -26,6 +26,7 @@ class ProfileActivity : AppCompatActivity() {
 
         setupLayout()
         observeVm()
+        viewModel.loadProfile()
     }
 
     private fun setupLayout() {
@@ -57,6 +58,14 @@ class ProfileActivity : AppCompatActivity() {
                 goToLoginAndClearBackstack()
                 viewModel.consumeSuccess()
             }
+        }
+
+        viewModel.profile.observe(this) { p ->
+            binding.tvStoreName.text = p?.storeName ?: "-"
+            binding.tvEmail.text = p?.email ?: "-"
+            binding.tvStoreNameValue.text = p?.storeName ?: "-"
+            binding.tvOwnerNameValue.text = p?.fullName ?: "-"
+            binding.tvPhoneValue.text = p?.phone ?: "-"
         }
     }
 

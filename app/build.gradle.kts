@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -117,4 +118,7 @@ dependencies {
 
     // Desugar (karena minSdk 24, bukan 26)
     coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
 }
