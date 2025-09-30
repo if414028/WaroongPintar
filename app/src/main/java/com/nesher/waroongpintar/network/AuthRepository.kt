@@ -1,10 +1,15 @@
 package com.nesher.waroongpintar.network
 
+import com.nesher.waroongpintar.model.Profile
+import com.nesher.waroongpintar.model.Subscription
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.user.UserInfo
 import io.github.jan.supabase.auth.user.UserSession
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.postgrest.query.Order
 
 /**
  * Auth repository untuk Supabase v3.
@@ -51,7 +56,44 @@ class AuthRepository(private val client: SupabaseClient) {
 
     /** Logout */
     suspend fun signOut(): Result<Unit> = runCatching {
-        client.auth.signOut()
+        client.auth.signOut()   // revoke & hapus session lokal
+        Unit
+    }
+
+    /** Fetch Profile data **/
+    suspend fun fetchMyProfileWithStore(): Result<Profile> = runCatching {
+        val user = client.auth.currentUserOrNull() ?: error("Belum login")
+
+        client.postgrest["profiles"].select(
+            columns = Columns.raw(
+                """
+                id,user_name,user_fullname,email,phone,is_active,
+                store_users(
+                    is_primary,
+                    stores(id,store_name,store_address)
+                )
+            """.trimIndent()
+            )
+        ) {
+            filter { eq("id", user.id) }
+        }.decodeSingle<Profile>()
+    }
+
+    suspend fun fetchActiveSubscriptionForStore(storeId: String): Result<Subscription?> = runCatching {
+        val rows = client.postgrest["subscriptions"].select(
+            columns = Columns.raw("""
+            id,store_id,status,current_period_end,
+            plans(id,plan_name,price_monthly)
+        """.trimIndent())
+        ) {
+            filter {
+                eq("store_id", storeId)
+                eq("status", "active")
+            }
+            order(column = "current_period_end", order = Order.ASCENDING)
+            limit(1)
+        }.decodeList<Subscription>()
+        rows.firstOrNull()
     }
 
     /** Helpers */

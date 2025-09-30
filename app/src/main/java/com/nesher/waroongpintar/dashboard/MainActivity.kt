@@ -12,6 +12,7 @@ import com.nesher.waroongpintar.databinding.ActivityMainBinding
 import com.nesher.waroongpintar.databinding.ViewMenuTileBinding
 import com.nesher.waroongpintar.orders.OrdersActivity
 import com.nesher.waroongpintar.productcatalogue.ProductCatalogueActivity
+import com.nesher.waroongpintar.profile.ProfileActivity
 import com.nesher.waroongpintar.utils.SimpleRecyclerAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         setupOrdersMetric()
         setupProductsMetric()
         setupMenuAdapter()
+        binding.avatar.setOnClickListener { goToProfile() }
+    }
+
+    private fun goToProfile() {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupRevenueMetric() {

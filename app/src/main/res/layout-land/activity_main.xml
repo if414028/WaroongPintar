@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -120,7 +119,6 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:background="@drawable/bg_circle_pink_gradient"
-                    android:padding="@dimen/_4sdp"
                     app:layout_constraintBottom_toBottomOf="@id/icHome"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -129,9 +127,9 @@
                         android:layout_width="@dimen/_12sdp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="2dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/ic_user"
+                        app:tint="@color/wp_white" />
 
                 </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

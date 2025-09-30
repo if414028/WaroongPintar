@@ -11,4 +11,8 @@
     <string name="orders">Pesanan</string>
 
     <string name="search_product">Cari Produk</string>
+
+    <string name="edit_profile">Edit Profile</string>
+    <string name="action_logout">Logout</string>
+    <string name="profile">Profil</string>
 </resources>
