@@ -1,4 +1,4 @@
-package com.nesher.waroongpintar.model
+package com.nesher.waroongpintar.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

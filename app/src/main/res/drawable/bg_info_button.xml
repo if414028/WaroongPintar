@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <!-- Warna background putih -->
-    <solid android:color="@android:color/transparent" />
+    <solid android:color="@color/wp_info" />
 
     <!-- Border biru -->
     <stroke
