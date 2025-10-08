@@ -19,10 +19,10 @@ coroutines = "1.8.1"
 serialization = "1.7.3"
 
 # Room & DataStore
-room = "2.6.1"
-datastore = "1.1.1"
-paging = "3.3.2"
-sqlite = "2.4.0"
+room = "2.8.1"
+datastore = "1.1.7"
+paging = "3.3.6"
+sqlite = "2.6.1"
 
 # Firebase
 firebase-bom = "34.1.0"
@@ -47,7 +47,8 @@ ktor = "3.3.0"
 desugar = "2.1.5"
 
 # Hilt
-hilt = "2.52"
+hilt = "2.57.2"
+javapoet = "1.13.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -115,6 +116,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 # Hilt
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

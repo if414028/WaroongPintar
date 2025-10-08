@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
                         else -> Intent(applicationContext, MainActivity::class.java)
                     }
+                    startActivity(intent)
                 }
             }
         binding.rvMenu.adapter = adapter

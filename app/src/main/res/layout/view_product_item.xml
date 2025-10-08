@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/wp_white"
         app:cardElevation="0dp"
         app:shapeAppearance="@style/Shape.Round.XL"
         app:strokeColor="@color/wp_info"
@@ -39,6 +40,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="2"
@@ -51,6 +53,7 @@
                 android:id="@+id/tvSku"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
@@ -62,13 +65,23 @@
                 android:id="@+id/tvBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_6ssp"
                 tools:text="Brand: ABC" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_6ssp"
+                tools:text="Kategori: ABC" />
 
             <TextView
                 android:id="@+id/tvStock"
@@ -76,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_6ssp"
                 tools:text="Stock: 15" />
 
             <TextView
@@ -85,9 +98,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
                 android:fontFamily="@font/proxima_nova"
                 android:textColor="@color/text_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 android:textStyle="bold"
                 tools:text="Harga: Rp 24.000" />
         </LinearLayout>

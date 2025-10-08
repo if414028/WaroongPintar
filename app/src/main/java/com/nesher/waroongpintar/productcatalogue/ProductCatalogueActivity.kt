@@ -1,7 +1,9 @@
 package com.nesher.waroongpintar.productcatalogue
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
@@ -18,11 +20,13 @@ import com.nesher.waroongpintar.databinding.ViewProductItemBinding
 import com.nesher.waroongpintar.utils.SimpleFilterRecyclerAdapter
 import com.nesher.waroongpintar.utils.SimpleRecyclerAdapter
 import com.nesher.waroongpintar.utils.toRupiah
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductCatalogueActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductCatalogueBinding
-    private lateinit var viewModel: ProductCatalogueViewModel
+    private val viewModel: ProductCatalogueViewModel by viewModels()
 
     private lateinit var categoryAdapter: SimpleRecyclerAdapter<ProductCategory>
     private lateinit var productAdapter: SimpleFilterRecyclerAdapter<ProductList>
@@ -32,7 +36,6 @@ class ProductCatalogueActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        viewModel = ViewModelProvider(this)[ProductCatalogueViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_catalogue)
         binding.lifecycleOwner = this
 
@@ -48,6 +51,13 @@ class ProductCatalogueActivity : AppCompatActivity() {
         binding.etSearch.doAfterTextChanged { text ->
             productAdapter.filter(text?.toString())
         }
+
+        binding.btnBulkUpload.setOnClickListener { goToBulkUpload() }
+    }
+
+    private fun goToBulkUpload() {
+        val intent = Intent(this, BulkUploadActivity::class.java)
+        startActivity(intent)
     }
 
     private fun observeVm() {
@@ -100,6 +110,10 @@ class ProductCatalogueActivity : AppCompatActivity() {
                 itemBinding.tvBrand.text = buildString {
                     append("Brand: ")
                     append(item.brandName)
+                }
+                itemBinding.tvCategory.text = buildString {
+                    append("Kategori: ")
+                    append(item.categoryName)
                 }
                 itemBinding.tvStock.text = buildString {
                     append("Stock: ")

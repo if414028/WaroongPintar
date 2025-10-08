@@ -9,6 +9,27 @@
     <string name="product_catalogue">Katalog Produk</string>
     <string name="point_of_sales">Point of Sales</string>
     <string name="orders">Pesanan</string>
+    <string name="bulk_upload">Bulk Upload Product</string>
+    <string name="bulk_upload_desc">Impor produk dari file CSV. Periksa pratinjau, validasi, lalu simpan ke database.</string>
+    <string name="upload_file">Upload File CSV</string>
+    <string name="upload_file_format">Format kolom: Nama, Kategori, Harga, Stok, Satuan, Barcode, SKU, Pajak%</string>
+    <string name="choose_file">Pilih File CSV</string>
+    <string name="review_data">Pratinjau Data</string>
+    <string name="review_data_desc">Menampilkan 5 dari 120 baris</string>
+    <string name="rules_title">Aturan Validasi</string>
+    <string-array name="rules">
+        <item>Nama wajib, min. 3 karakter</item>
+        <item>Harga numerik ≥ 0</item>
+        <item>Stok numerik ≥ 0</item>
+        <item>Kategori harus yang terdaftar</item>
+        <item>Barcode opsional, unik</item>
+    </string-array>
+    <string name="tips_title">Tips CSV</string>
+    <string-array name="tips">
+        <item>Gunakan delimiter koma "," atau titik koma ";"</item>
+        <item>Encoding UTF-8, header baris pertama</item>
+        <item>Hindari formula; ekspor sebagai nilai</item>
+    </string-array>
 
     <string name="search_product">Cari Produk</string>
 

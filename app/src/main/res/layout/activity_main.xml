@@ -109,6 +109,7 @@
                     app:elevation="@dimen/_4sdp"
                     app:icon="@drawable/ic_download"
                     app:iconGravity="textStart"
+                    app:iconSize="@dimen/_12sdp"
                     app:layout_constraintBottom_toBottomOf="@id/icHome"
                     app:layout_constraintEnd_toStartOf="@id/avatar"
                     app:layout_constraintTop_toTopOf="parent" />
