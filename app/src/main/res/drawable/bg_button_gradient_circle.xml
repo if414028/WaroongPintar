@@ -5,14 +5,17 @@
     <!-- Gradient biru -->
     <gradient
         android:angle="0"
-        android:startColor="@color/wp_buttonStart"
         android:endColor="@color/wp_buttonEnd"
+        android:startColor="@color/wp_buttonStart"
         android:type="linear" />
 
     <!-- Sudut rounded -->
-    <corners android:radius="@dimen/_24sdp" />
+    <corners android:radius="50dp" />
 
     <!-- Shadow kecil via padding + elevation di button -->
-    <padding android:left="@dimen/_16sdp" android:top="@dimen/_8sdp"
-        android:right="@dimen/_16sdp" android:bottom="@dimen/_8sdp"/>
+    <padding
+        android:bottom="12dp"
+        android:left="16dp"
+        android:right="16dp"
+        android:top="12dp" />
 </shape>

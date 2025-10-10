@@ -27,7 +27,7 @@
             android:fontFamily="@font/proxima_nova"
             android:text="Kategori Produk"
             android:textColor="@{isSelected ? @color/wp_white : @color/wp_info, default = @color/wp_info}"
-            android:textSize="@dimen/_8ssp"
+            android:textSize="@dimen/_10ssp"
             android:textStyle="bold" />
 
     </FrameLayout>

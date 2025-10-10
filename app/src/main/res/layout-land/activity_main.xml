@@ -1,208 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/scroll"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/wp_surface"
-        android:fillViewport="true">
+        android:padding="@dimen/_16sdp">
 
+        <!-- Header: greeting + actions -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_16sdp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Header: greeting + actions -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headerCard"
-                android:layout_width="match_parent"
+            <!-- Home icon circle -->
+            <FrameLayout
+                android:id="@+id/icHome"
+                android:layout_width="@dimen/_24sdp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_icon_gradient"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <!-- Home icon circle -->
-                <FrameLayout
-                    android:id="@+id/icHome"
-                    android:layout_width="@dimen/_24sdp"
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_icon_gradient"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_home" />
 
-                    <ImageView
-                        android:layout_width="@dimen/_16sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_home" />
+            </FrameLayout>
 
-                </FrameLayout>
-
-
-                <TextView
-                    android:id="@+id/tvGreeting"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/proximanova_bold"
-                    android:text="Hi Nesher, welcome aboard!"
-                    android:textColor="@color/wp_on_surface"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintBottom_toBottomOf="@id/icHome"
-                    app:layout_constraintEnd_toStartOf="@id/chipMonth"
-                    app:layout_constraintStart_toEndOf="@id/icHome"
-                    app:layout_constraintTop_toTopOf="@id/icHome" />
-
-                <!-- Month filter chip -->
-                <LinearLayout
-                    android:id="@+id/chipMonth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_24sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="@drawable/bg_outline_button"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/_8sdp"
-                    android:paddingEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/icHome"
-                    app:layout_constraintEnd_toStartOf="@id/btnDownload"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
-                        android:src="@drawable/ic_calendar" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_4sdp"
-                        android:fontFamily="@font/proximanova_bold"
-                        android:text="Bulan Ini"
-                        android:textColor="@color/wp_info"
-                        android:textSize="@dimen/_8sdp" />
-
-                    <ImageView
-                        android:layout_width="@dimen/_8sdp"
-                        android:layout_height="@dimen/_8sdp"
-                        android:layout_marginStart="@dimen/_16sdp"
-                        android:src="@drawable/ic_chevron_down" />
-
-
-                </LinearLayout>
-
-                <!-- Download report button -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDownload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_24sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="@drawable/bg_green_button"
-                    android:fontFamily="@font/proximanova_bold"
-                    android:text="Download Report"
-                    android:textSize="@dimen/_8ssp"
-                    app:backgroundTint="@null"
-                    app:elevation="@dimen/_4sdp"
-                    app:icon="@drawable/ic_download"
-                    app:iconGravity="textStart"
-                    app:iconSize="@dimen/_12sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/icHome"
-                    app:layout_constraintEnd_toStartOf="@id/avatar"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- Avatar -->
-                <FrameLayout
-                    android:id="@+id/avatar"
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:background="@drawable/bg_circle_pink_gradient"
-                    app:layout_constraintBottom_toBottomOf="@id/icHome"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_user"
-                        app:tint="@color/wp_white" />
-
-                </FrameLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Metrics row -->
-            <LinearLayout
-                android:id="@+id/metricRow"
+            <TextView
+                android:id="@+id/tvGreeting"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:fontFamily="@font/proximanova_bold"
+                android:text="Hi Nesher, welcome aboard!"
+                android:textColor="@color/wp_on_surface"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chipMonth"
+                app:layout_constraintStart_toEndOf="@id/icHome"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Month filter chip -->
+            <LinearLayout
+                android:id="@+id/chipMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:background="@drawable/bg_outline_button"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/headerCard">
+                android:paddingStart="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnDownload"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <!-- Card 1: Total Pendapatan -->
-                <include
-                    android:id="@+id/cardRevenue"
-                    layout="@layout/view_metric_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                <ImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:src="@drawable/ic_calendar" />
 
-                <!-- Card 2: Total Pesanan -->
-                <include
-                    android:id="@+id/cardOrders"
-                    layout="@layout/view_metric_card"
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:fontFamily="@font/proximanova_bold"
+                    android:text="Bulan Ini"
+                    android:textColor="@color/wp_info"
+                    android:textSize="@dimen/_10ssp" />
 
-                <!-- Card 3: Total Produk -->
-                <include
-                    android:id="@+id/cardProducts"
-                    layout="@layout/view_metric_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                <ImageView
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:src="@drawable/ic_chevron_down" />
+
+
             </LinearLayout>
 
-            <!-- Divider -->
-            <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:background="@color/wp_info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/metricRow" />
+            <!-- Download report button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:background="@drawable/bg_green_button"
+                android:fontFamily="@font/proximanova_bold"
+                android:text="Download Report"
+                android:textSize="@dimen/_10ssp"
+                app:backgroundTint="@null"
+                app:elevation="@dimen/_4sdp"
+                app:icon="@drawable/ic_download"
+                app:iconGravity="textStart"
+                app:iconSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/avatar"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Menu tiles -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMenu"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:gravity="center"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            <!-- Avatar -->
+            <FrameLayout
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:background="@drawable/bg_circle_pink_gradient"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider"
-                app:spanCount="7"
-                tools:itemCount="3"
-                tools:listitem="@layout/view_menu_tile">
+                app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_user"
+                    app:tint="@color/wp_white" />
 
-            </androidx.recyclerview.widget.RecyclerView>
-
+            </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Metrics row -->
+                <LinearLayout
+                    android:id="@+id/metricRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal">
+
+                    <!-- Card 1: Total Pendapatan -->
+                    <include
+                        android:id="@+id/cardRevenue"
+                        layout="@layout/view_metric_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <!-- Card 2: Total Pesanan -->
+                    <include
+                        android:id="@+id/cardOrders"
+                        layout="@layout/view_metric_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <!-- Card 3: Total Produk -->
+                    <include
+                        android:id="@+id/cardProducts"
+                        layout="@layout/view_metric_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@color/wp_info" />
+
+                <!-- Menu tiles -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="7"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/view_menu_tile">
+
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

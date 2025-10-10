@@ -35,7 +35,6 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_catalogue)
         binding.lifecycleOwner = this
 
@@ -83,7 +82,7 @@ class ProductCatalogueActivity : AppCompatActivity() {
                     (selectedCategoryId == null && item.id.isEmpty()) || selectedCategoryId == item.id
                 itemBinding.isSelected = isSelected
 
-                binding.root.setOnClickListener {
+                itemBinding.root.setOnClickListener {
                     selectedCategoryId = item.id.ifEmpty { null }
                     applyCategoryFilterAndSearch()
                     categoryAdapter.notifyDataSetChanged()

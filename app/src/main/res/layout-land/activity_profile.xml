@@ -61,7 +61,7 @@
                 android:fontFamily="@font/proximanova_bold"
                 android:text="@string/profile"
                 android:textColor="@color/wp_on_surface"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="@id/ic_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ic_profile"
@@ -150,7 +150,7 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Toko Grosir Makmur"
                                     android:textColor="@color/text_black"
-                                    android:textSize="@dimen/_8ssp"
+                                    android:textSize="@dimen/_12ssp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -160,22 +160,22 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="owner@toko-makmur.id"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_6ssp" />
+                                    android:textSize="@dimen/_10ssp" />
 
                                 <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnEditProfile"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="@dimen/_26sdp"
                                     android:layout_marginTop="@dimen/_4sdp"
                                     android:background="@drawable/bg_button_gradient_circle"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="@string/edit_profile"
-                                    android:textSize="@dimen/_6ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     android:textStyle="bold"
                                     app:backgroundTint="@null"
                                     app:icon="@drawable/ic_edit"
                                     app:iconGravity="textStart"
-                                    app:iconPadding="@dimen/_4sdp"
+                                    app:iconSize="@dimen/_12sdp"
                                     app:rippleColor="@android:color/white" />
                             </LinearLayout>
                         </LinearLayout>
@@ -219,21 +219,23 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nama Toko"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_6ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <TextView
                                     android:id="@+id/tvStoreNameValue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Toko Grosir Makmur"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -255,21 +257,23 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nama Pemilik"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_6ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <TextView
                                     android:id="@+id/tvOwnerNameValue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Budi Santoso"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -291,21 +295,23 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nomor HP"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_6ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <TextView
                                     android:id="@+id/tvPhoneValue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="0812-3456-7890"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -365,7 +371,7 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Subscription Aktif"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp"
+                                    android:textSize="@dimen/_12ssp"
                                     android:textStyle="bold" />
 
                                 <com.google.android.material.chip.Chip
@@ -375,7 +381,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Rp199K/bulan"
                                     android:textColor="@color/wp_info"
-                                    android:textSize="@dimen/_6ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     app:chipStrokeColor="@color/wp_info" />
                             </LinearLayout>
 
@@ -386,21 +392,21 @@
                                 android:fontFamily="@font/proxima_nova"
                                 android:text="Berikutnya: 30 Sep 2025"
                                 android:textColor="@color/wp_textSecondary"
-                                android:textSize="@dimen/_6ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnManageBilling"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/_26sdp"
                                 android:layout_marginTop="@dimen/_4sdp"
                                 android:background="@drawable/bg_button_gradient_circle"
                                 android:text="Kelola Tagihan"
-                                android:textSize="@dimen/_6ssp"
+                                android:textSize="@dimen/_10ssp"
                                 android:textStyle="bold"
                                 app:backgroundTint="@null"
                                 app:icon="@drawable/ic_receipt"
                                 app:iconGravity="textStart"
-                                app:iconPadding="@dimen/_4sdp" />
+                                app:iconSize="@dimen/_12sdp" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -436,7 +442,7 @@
                                 android:paddingBottom="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_14sdp"
                                     android:layout_height="wrap_content"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_change_password" />
@@ -444,16 +450,16 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Ganti Password"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -471,7 +477,7 @@
                                 android:paddingBottom="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_14sdp"
                                     android:layout_height="wrap_content"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_wallet" />
@@ -479,16 +485,16 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Metode Pembayaran"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -506,7 +512,7 @@
                                 android:paddingBottom="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_14sdp"
                                     android:layout_height="wrap_content"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_order_history" />
@@ -514,16 +520,16 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Riwayat Tagihan"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -541,7 +547,7 @@
                                 android:paddingBottom="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_14sdp"
                                     android:layout_height="wrap_content"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_setting" />
@@ -549,16 +555,16 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
+                                    android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Pengaturan"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_8ssp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
                         </LinearLayout>
@@ -568,19 +574,19 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_26sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginEnd="@dimen/_16sdp"
                         android:background="@drawable/bg_button_gradient_error_circle"
                         android:fontFamily="@font/proxima_nova"
                         android:text="@string/action_logout"
                         android:textColor="@color/wp_white"
-                        android:textSize="@dimen/_8ssp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         app:backgroundTint="@null"
                         app:icon="@drawable/ic_logout"
                         app:iconGravity="textStart"
-                        app:iconPadding="8dp" />
+                        app:iconSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <!-- Bottom spacing -->

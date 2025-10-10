@@ -45,7 +45,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="2"
                 android:textColor="@color/text_black"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold"
                 tools:text="Nama Produk-Produk ABC" />
 
@@ -58,7 +58,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
                 android:textColor="@color/wp_textSecondary"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_10ssp"
                 tools:text="SKU_ABC1234567" />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
                 android:textColor="@color/wp_textSecondary"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_10ssp"
                 tools:text="Brand: ABC" />
 
             <TextView
@@ -80,7 +80,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
                 android:textColor="@color/wp_textSecondary"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_10ssp"
                 tools:text="Kategori: ABC" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
                 android:textColor="@color/wp_textSecondary"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_10ssp"
                 tools:text="Stock: 15" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:fontFamily="@font/proxima_nova"
                 android:textColor="@color/text_black"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold"
                 tools:text="Harga: Rp 24.000" />
         </LinearLayout>

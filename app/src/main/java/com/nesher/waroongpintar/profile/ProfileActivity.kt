@@ -19,7 +19,6 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         binding.lifecycleOwner = this

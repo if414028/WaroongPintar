@@ -15,7 +15,6 @@ class BulkUploadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[BulkUploadViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_bulk_upload)
 
