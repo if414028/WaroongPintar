@@ -95,7 +95,6 @@ class ProfileViewModel(private val repo: AuthRepository = AuthRepository((App.in
                     nextBillingLabel = "-"
                 ))
             } else {
-                // gagal muat subscription tidak harus block UI
                 subscription.postValue(SubscriptionUi(
                     statusText = "Tidak diketahui",
                     planLabel = "-",

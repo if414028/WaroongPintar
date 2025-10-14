@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="isError"
+            type="Boolean" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/root"
@@ -61,7 +75,7 @@
                 android:fontFamily="@font/proximanova_bold"
                 android:text="@string/profile"
                 android:textColor="@color/wp_on_surface"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="@id/ic_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ic_profile"
@@ -150,7 +164,7 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Toko Grosir Makmur"
                                     android:textColor="@color/text_black"
-                                    android:textSize="@dimen/_12ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -160,22 +174,22 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="owner@toko-makmur.id"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_10ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnEditProfile"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/_26sdp"
+                                    android:layout_height="@dimen/_20sdp"
                                     android:layout_marginTop="@dimen/_4sdp"
                                     android:background="@drawable/bg_button_gradient_circle"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="@string/edit_profile"
-                                    android:textSize="@dimen/_10ssp"
+                                    android:textSize="@dimen/_8ssp"
                                     android:textStyle="bold"
                                     app:backgroundTint="@null"
                                     app:icon="@drawable/ic_edit"
                                     app:iconGravity="textStart"
-                                    app:iconSize="@dimen/_12sdp"
+                                    app:iconSize="@dimen/_10sdp"
                                     app:rippleColor="@android:color/white" />
                             </LinearLayout>
                         </LinearLayout>
@@ -203,6 +217,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="10"
                                 android:gravity="center_vertical"
                                 android:orientation="horizontal"
                                 android:paddingStart="@dimen/_16sdp"
@@ -211,8 +226,9 @@
                                 android:paddingBottom="@dimen/_8sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_store" />
 
@@ -220,21 +236,22 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_8sdp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="3"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nama Toko"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <TextView
                                     android:id="@+id/tvStoreNameValue"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Toko Grosir Makmur"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp"
+                                    android:textSize="@dimen/_8ssp"
                                     android:textStyle="bold" />
                             </LinearLayout>
 
@@ -246,11 +263,13 @@
                                 android:paddingStart="@dimen/_16sdp"
                                 android:paddingTop="@dimen/_8sdp"
                                 android:paddingEnd="@dimen/_16sdp"
-                                android:paddingBottom="@dimen/_8sdp">
+                                android:paddingBottom="@dimen/_8sdp"
+                                android:weightSum="10">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_user" />
 
@@ -258,21 +277,22 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_8sdp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="3"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nama Pemilik"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <TextView
                                     android:id="@+id/tvOwnerNameValue"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Budi Santoso"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp"
+                                    android:textSize="@dimen/_8ssp"
                                     android:textStyle="bold" />
                             </LinearLayout>
 
@@ -284,11 +304,13 @@
                                 android:paddingStart="@dimen/_16sdp"
                                 android:paddingTop="@dimen/_8sdp"
                                 android:paddingEnd="@dimen/_16sdp"
-                                android:paddingBottom="@dimen/_8sdp">
+                                android:paddingBottom="@dimen/_8sdp"
+                                android:weightSum="10">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/ic_phone" />
 
@@ -296,21 +318,22 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_8sdp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="3"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Nomor HP"
                                     android:textColor="@color/wp_textSecondary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <TextView
                                     android:id="@+id/tvPhoneValue"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="0812-3456-7890"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp"
+                                    android:textSize="@dimen/_8ssp"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
@@ -371,7 +394,7 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Subscription Aktif"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp"
+                                    android:textSize="@dimen/_10ssp"
                                     android:textStyle="bold" />
 
                                 <com.google.android.material.chip.Chip
@@ -381,7 +404,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Rp199K/bulan"
                                     android:textColor="@color/wp_info"
-                                    android:textSize="@dimen/_10ssp"
+                                    android:textSize="@dimen/_7ssp"
                                     app:chipStrokeColor="@color/wp_info" />
                             </LinearLayout>
 
@@ -392,21 +415,21 @@
                                 android:fontFamily="@font/proxima_nova"
                                 android:text="Berikutnya: 30 Sep 2025"
                                 android:textColor="@color/wp_textSecondary"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_8ssp" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnManageBilling"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_26sdp"
+                                android:layout_height="@dimen/_20sdp"
                                 android:layout_marginTop="@dimen/_4sdp"
                                 android:background="@drawable/bg_button_gradient_circle"
                                 android:text="Kelola Tagihan"
-                                android:textSize="@dimen/_10ssp"
+                                android:textSize="@dimen/_8ssp"
                                 android:textStyle="bold"
                                 app:backgroundTint="@null"
                                 app:icon="@drawable/ic_receipt"
                                 app:iconGravity="textStart"
-                                app:iconSize="@dimen/_12sdp" />
+                                app:iconSize="@dimen/_10sdp" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -455,11 +478,11 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Ganti Password"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -490,11 +513,11 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Metode Pembayaran"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -525,11 +548,11 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Riwayat Tagihan"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
 
@@ -560,11 +583,11 @@
                                     android:fontFamily="@font/proxima_nova"
                                     android:text="Pengaturan"
                                     android:textColor="@color/wp_textPrimary"
-                                    android:textSize="@dimen/_12ssp" />
+                                    android:textSize="@dimen/_8ssp" />
 
                                 <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
                                     android:src="@drawable/ic_chevron_right" />
                             </LinearLayout>
                         </LinearLayout>
@@ -581,12 +604,12 @@
                         android:fontFamily="@font/proxima_nova"
                         android:text="@string/action_logout"
                         android:textColor="@color/wp_white"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_8ssp"
                         android:textStyle="bold"
                         app:backgroundTint="@null"
                         app:icon="@drawable/ic_logout"
                         app:iconGravity="textStart"
-                        app:iconSize="@dimen/_12sdp" />
+                        app:iconSize="@dimen/_10sdp" />
                 </LinearLayout>
 
                 <!-- Bottom spacing -->

@@ -36,4 +36,9 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="action_logout">Logout</string>
     <string name="profile">Profil</string>
+
+    <string name="progress_loading">Mohon Tunggu</string>
+    <string name="progress_loading_desc">Sedang mengambil data dari server ...</string>
+    <string name="error_loading">Gagal Mendapatkan Data</string>
+    <string name="errir_loading_desc">Gagal mengambil data dari server</string>
 </resources>
