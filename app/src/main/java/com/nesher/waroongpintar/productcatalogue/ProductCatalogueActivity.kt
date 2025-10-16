@@ -2,8 +2,12 @@ package com.nesher.waroongpintar.productcatalogue
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,8 +37,15 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_catalogue)
         binding.lifecycleOwner = this
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(bottom = sb.bottom)
+            insets
+        }
 
         setupLayout()
         observeVm()
@@ -131,7 +142,7 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
         binding.rvProducts.apply {
             layoutManager =
-                GridLayoutManager(this@ProductCatalogueActivity, 4)
+                GridLayoutManager(this@ProductCatalogueActivity, 5)
             adapter = productAdapter
             setHasFixedSize(true)
         }

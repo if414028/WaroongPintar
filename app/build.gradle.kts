@@ -131,6 +131,9 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.javapoet)
+
+    // Kotlin CSV
+    implementation(libs.kotlin.csv.jvm)
 }
 
 kapt {

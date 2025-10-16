@@ -28,3 +28,9 @@ fun Long?.toRupiahOrDash(): String = this?.toRupiah() ?: "-"
 /** (opsional) Hapus simbol mata uang, hanya angka berformat: "24.000" */
 fun Long.toRupiahNumberOnly(): String =
     rupiahFormatter.format(this).replace(Regex("[^0-9.,]"), "").trim()
+
+/** String formatters **/
+fun String?.asLongOrNull(): Long? = this?.trim()?.takeIf { it.isNotEmpty() }?.toLongOrNull()
+fun String?.asIntOrZero(): Int = this?.trim()?.toIntOrNull() ?: 0
+fun String?.asBoolOrTrue(): Boolean = this?.trim()?.lowercase() != "false"
+fun String?.nz(): String = this?.trim().orEmpty()

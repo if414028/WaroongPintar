@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/wp_white"
+        app:cardElevation="0dp"
+        app:shapeAppearance="@style/Shape.Round.XL"
+        app:strokeColor="@color/wp_info"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_product"
+                tools:ignore="ContentDescription" />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@color/wp_info" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="2"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="bold"
+                tools:text="Nama Produk-Produk ABC" />
+
+            <TextView
+                android:id="@+id/tvSku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_7ssp"
+                tools:text="SKU_ABC1234567" />
+
+            <TextView
+                android:id="@+id/tvBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_7ssp"
+                tools:text="Brand: ABC" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_7ssp"
+                tools:text="Kategori: ABC" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_7ssp"
+                tools:text="Stock: 15" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:fontFamily="@font/proxima_nova"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="bold"
+                tools:text="Harga: Rp 24.000" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         dataStoreManager = DataStoreManager(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)

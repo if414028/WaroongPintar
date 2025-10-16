@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -19,9 +22,16 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         binding.lifecycleOwner = this
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(bottom = sb.bottom)
+            insets
+        }
 
         setupLayout()
         observeVm()

@@ -7,6 +7,8 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.nesher.waroongpintar.data.model.Product
+import com.nesher.waroongpintar.data.model.ProductBrand
+import com.nesher.waroongpintar.data.model.ProductCategory
 import com.nesher.waroongpintar.data.model.ProductList
 
 @Dao
@@ -48,4 +50,25 @@ interface ProductDao {
         ORDER BY name COLLATE NOCASE ASC
     """)
     fun paging(q: String?, categoryId: String?): PagingSource<Int, ProductList>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsert(products: List<Product>)
+
+    @Query("SELECT id, name FROM categories")
+    suspend fun getAllCategories(): List<IdName>
+
+    @Query("SELECT id, name FROM brands")
+    suspend fun getAllBrands(): List<IdName>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertCategory(entity: ProductCategory): Long
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertBrand(entity: ProductBrand): Long
+
+    @Query("SELECT 1 FROM products WHERE sku = :sku LIMIT 1")
+    suspend fun existsBySku(sku: String): Int
+
+    @Query("SELECT 1 FROM products WHERE barcode = :barcode LIMIT 1")
+    suspend fun existsByBarcode(barcode: String): Int
 }

@@ -50,6 +50,9 @@ desugar = "2.1.5"
 hilt = "2.57.2"
 javapoet = "1.13.0"
 
+# Kotlin CSV
+kotlin-csv = "1.10.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -117,6 +120,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
+
+# Kotlin CSV
+kotlin-csv-jvm = { group = "com.github.doyaaaaaken", name = "kotlin-csv-jvm", version.ref = "kotlin-csv" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
