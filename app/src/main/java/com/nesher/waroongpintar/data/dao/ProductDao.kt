@@ -71,4 +71,10 @@ interface ProductDao {
 
     @Query("SELECT 1 FROM products WHERE barcode = :barcode LIMIT 1")
     suspend fun existsByBarcode(barcode: String): Int
+
+    @Query("SELECT LOWER(sku) FROM products WHERE LOWER(sku) IN (:skus)")
+    suspend fun findSkuInLower(skus: List<String>): List<String>
+
+    @Query("SELECT LOWER(barcode) FROM products WHERE barcode IS NOT NULL AND LOWER(barcode) IN (:barcodes)")
+    suspend fun findBarcodeInLower(barcodes: List<String>): List<String>
 }

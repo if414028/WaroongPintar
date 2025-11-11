@@ -41,4 +41,5 @@
     <string name="progress_loading_desc">Sedang mengambil data dari server ...</string>
     <string name="error_loading">Gagal Mendapatkan Data</string>
     <string name="errir_loading_desc">Gagal mengambil data dari server</string>
+    <string name="import_to_db">Impor ke Database</string>
 </resources>

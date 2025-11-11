@@ -13,4 +13,10 @@ interface ProductBrandDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(items: List<ProductBrand>)
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun insert(brand: ProductBrand)
+
+    @Query("SELECT * FROM brands WHERE LOWER(name) = LOWER(:name) LIMIT 1")
+    suspend fun findByNameLower(name: String): ProductBrand?
 }
