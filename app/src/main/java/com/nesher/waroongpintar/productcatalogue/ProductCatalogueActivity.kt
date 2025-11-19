@@ -1,8 +1,10 @@
 package com.nesher.waroongpintar.productcatalogue
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +37,13 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
     private var selectedCategoryId: String? = null
 
+    private val bulkUploadLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                viewModel.refreshData()
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -65,7 +74,7 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
     private fun goToBulkUpload() {
         val intent = Intent(this, BulkUploadActivity::class.java)
-        startActivity(intent)
+        bulkUploadLauncher.launch(intent)
     }
 
     private fun observeVm() {

@@ -698,7 +698,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_nova"
-                android:text="@string/errir_loading_desc"
+                android:text="@string/error_loading_desc"
                 android:textAlignment="center"
                 android:textColor="@color/wp_textSecondary"
                 android:textSize="@dimen/_8ssp" />

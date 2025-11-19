@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/_12sdp"
         android:paddingTop="@dimen/_6sdp"
-        android:weightSum="11">
+        android:weightSum="14">
 
         <TextView
             android:id="@+id/tv_name"
@@ -30,11 +30,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:ellipsize="end"
+            android:layout_marginStart="@dimen/_2sdp"
             android:fontFamily="@font/proxima_nova"
             android:maxLines="1"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
             tools:text="Minuman" />
+
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:fontFamily="@font/proxima_nova"
+            android:maxLines="1"
+            android:textColor="@color/wp_textPrimary"
+            android:textSize="@dimen/_10ssp"
+            tools:text="Sosro" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -85,13 +98,13 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:textAlignment="center"
             android:fontFamily="@font/proximanova_bold"
-            android:textSize="@dimen/_10ssp"
+            android:textSize="@dimen/_8ssp"
             app:chipCornerRadius="@dimen/_8sdp"
             app:chipStrokeWidth="@dimen/_1sdp"
-            tools:text="Aktif" />
+            tools:text="Invalid" />
     </LinearLayout>
 
 </layout>

@@ -46,4 +46,9 @@ class ProductCatalogueViewModel @Inject constructor(
             _allProducts.postValue(items)
         }
     }
+
+    fun refreshData() {
+        loadCategories()
+        loadProducts()
+    }
 }

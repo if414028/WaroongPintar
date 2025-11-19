@@ -1,5 +1,6 @@
 package com.nesher.waroongpintar.productcatalogue
 
+import android.app.Activity
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -14,9 +15,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.nesher.waroongpintar.R
 import com.nesher.waroongpintar.databinding.ActivityBulkUploadBinding
+import com.nesher.waroongpintar.databinding.DialogSuccessBinding
 import com.nesher.waroongpintar.databinding.ItemPreviewRowBinding
 import com.nesher.waroongpintar.utils.SimpleRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,16 +34,38 @@ class BulkUploadActivity : AppCompatActivity() {
 
     private lateinit var previewAdapter: SimpleRecyclerAdapter<BulkUploadViewModel.PreviewRow>
 
+    private var selectedFileName: String? = null
+
     private val pickCsv = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         if (uri == null) return@registerForActivityResult
+        selectedFileName = getFileName(uri)
+
         val text = contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
         if (text.isNullOrEmpty()) {
             Snackbar.make(binding.root, "Gagal membaca file", Snackbar.LENGTH_LONG).show()
         } else {
             viewModel.parseCsvText(text)
         }
+    }
+
+    private fun getFileName(uri: Uri): String? {
+        var result: String? = null
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val idx = it.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+                if (idx >= 0) result = it.getString(idx)
+            }
+        }
+        if (result == null) {
+            uri.path?.let { path ->
+                val cut = path.lastIndexOf('/')
+                if (cut != -1) result = path.substring(cut + 1)
+            }
+        }
+        return result
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,14 +95,9 @@ class BulkUploadActivity : AppCompatActivity() {
             .joinToString("\n")
         binding.tvTips.text = tips
 
-        binding.btnUploadCsv.setOnClickListener {
-            val preview = viewModel.preview.value.orEmpty()
-            if (preview.isEmpty()) {
-                pickCsv.launch("text/*")
-            } else {
-                viewModel.importValidRows()
-            }
-        }
+        binding.btnUploadCsv.setOnClickListener { pickCsv.launch("text/*") }
+        binding.btnCancelImport.setOnClickListener { viewModel.cancelImport() }
+        binding.btnImportData.setOnClickListener { viewModel.importValidRows() }
         setupReviewProductRecyclerView()
     }
 
@@ -96,7 +116,9 @@ class BulkUploadActivity : AppCompatActivity() {
 
             itembinding.tvName.text = r["name"].orEmpty()
             itembinding.tvCategory.text = r["category_name"].orEmpty()
-            itembinding.tvPrice.text = r["price"]?.toLongOrNull()?.let { rupiahFmt.format(it) } ?: "-"
+            itembinding.tvBrand.text = r["brand_name"].orEmpty()
+            itembinding.tvPrice.text =
+                r["price"]?.toLongOrNull()?.let { rupiahFmt.format(it) } ?: "-"
             itembinding.tvStock.text = r["stock"]?.toIntOrNull()?.toString() ?: "0"
             itembinding.tvUnit.text = r["unit"].orEmpty().ifEmpty { "pcs" }
             itembinding.tvBarcode.text = r["barcode"].orEmpty().ifEmpty { "—" }
@@ -117,13 +139,13 @@ class BulkUploadActivity : AppCompatActivity() {
             chip.text = "Valid"
             chip.setTextColor(ContextCompat.getColor(ctx, R.color.wp_success))
             chip.chipBackgroundColor = ContextCompat.getColorStateList(ctx, R.color.wp_light_green)
-            chip.chipStrokeColor     = ContextCompat.getColorStateList(ctx, R.color.wp_success)
+            chip.chipStrokeColor = ContextCompat.getColorStateList(ctx, R.color.wp_success)
         } else {
             val msg = row.errors.firstOrNull().orEmpty().ifEmpty { "Error" }
-            chip.text = msg
+            chip.text = "Invalid"
             chip.setTextColor(ContextCompat.getColor(ctx, R.color.wp_danger))
             chip.chipBackgroundColor = ContextCompat.getColorStateList(ctx, R.color.wp_light_red)
-            chip.chipStrokeColor     = ContextCompat.getColorStateList(ctx, R.color.wp_danger)
+            chip.chipStrokeColor = ContextCompat.getColorStateList(ctx, R.color.wp_danger)
         }
     }
 
@@ -193,6 +215,37 @@ class BulkUploadActivity : AppCompatActivity() {
             val valid = rows.count { it.isValid }
             val invalid = total - valid
             binding.tvReviewTitle.text = getString(R.string.review_data)
+
+            val invalidRows = rows.filter { !it.isValid }
+            if (invalidRows.isEmpty()) {
+                binding.tvErrorMessage.visibility = View.GONE
+                binding.tvErrorMessage.text = ""
+            } else {
+                binding.tvErrorMessage.visibility = View.VISIBLE
+
+                val maxRowsToShow = 5
+                val messages = invalidRows
+                    .take(maxRowsToShow)
+                    .flatMap { row ->
+                        if (row.errors.isEmpty()) {
+                            listOf("Baris ${row.lineNo}: data tidak valid")
+                        } else {
+                            row.errors.map { err -> "Baris ${row.lineNo}: $err" }
+                        }
+                    }
+
+                val moreCount = invalidRows.size - maxRowsToShow
+                val finalText = buildString {
+                    appendLine("Ditemukan $invalid baris yang tidak valid:")
+                    append(messages.joinToString("\n"))
+                    if (moreCount > 0) {
+                        append("\n+ $moreCount baris lainnya memiliki error.")
+                    }
+                }
+
+                binding.tvErrorMessage.text = finalText
+            }
+
             if (total == 0) {
                 moveChipToStartProgress()
                 binding.tvReviewDesc.text = getString(R.string.review_data_desc)
@@ -205,21 +258,24 @@ class BulkUploadActivity : AppCompatActivity() {
             }
 
             if (total > 0) {
-                binding.btnUploadCsv.text = getString(R.string.import_to_db)
-                binding.btnUploadCsv.background =
-                    ContextCompat.getDrawable(this, R.drawable.bg_green_button)
-                binding.rowHeader.visibility = View.VISIBLE
+                binding.btnUploadCsv.visibility = View.GONE
+                binding.icChooseFile.visibility = View.GONE
+                binding.lyPreview.visibility = View.VISIBLE
+                binding.icFile.visibility = View.VISIBLE
+                binding.tvUploadDesc.text = selectedFileName ?: "-"
+
                 previewAdapter.updateMainData(rows.toMutableList())
             } else {
-                binding.btnUploadCsv.text = getString(R.string.choose_file)
-                binding.btnUploadCsv.background =
-                    ContextCompat.getDrawable(this, R.drawable.bg_button_gradient_circle)
-                binding.rowHeader.visibility = View.GONE
+                binding.btnUploadCsv.visibility = View.VISIBLE
+                binding.icChooseFile.visibility = View.VISIBLE
+                binding.lyPreview.visibility = View.GONE
+                binding.icFile.visibility = View.GONE
+                binding.tvUploadDesc.text = getString(R.string.upload_file)
             }
         }
 
         viewModel.statusText.observe(this) { msg ->
-            if (!msg.isNullOrBlank()) {
+            if (!msg.isNullOrBlank() && viewModel.importResult.value == null) {
                 Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
             }
         }
@@ -231,7 +287,24 @@ class BulkUploadActivity : AppCompatActivity() {
 
         viewModel.importResult.observe(this) { res ->
             res ?: return@observe
-            Snackbar.make(binding.root, res.message, Snackbar.LENGTH_LONG).show()
+
+            moveChipToDoneProgress()
+
+            val dialogBinding = DialogSuccessBinding.inflate(layoutInflater)
+            dialogBinding.message = res.message
+
+            val dialog = MaterialAlertDialogBuilder(this)
+                .setView(dialogBinding.root)
+                .setCancelable(false)
+                .create()
+
+            dialogBinding.btnOk.setOnClickListener {
+                dialog.dismiss()
+                setResult(Activity.RESULT_OK)
+                finish()
+            }
+
+            dialog.show()
         }
     }
 }

@@ -60,13 +60,13 @@ class BulkUploadViewModel @Inject constructor (private val db : AppDatabase) : V
             val rowsRaw = reader.readAllWithHeader(csvText)
 
             val rows = rowsRaw.map { row ->
-                row.mapValues { it.value?.trim() }
+                row.mapValues { it.value.trim() }
             }
 
             val seenSku = mutableSetOf<String>()
             val seenBarcode = mutableSetOf<String>()
             val previews = rows.mapIndexed { idx, row ->
-                val line = idx + 2
+                val line = idx + 1
                 val errs = mutableListOf<String>()
 
                 fun get(k: String) = row[k]?.trim().orEmpty()
@@ -245,4 +245,10 @@ class BulkUploadViewModel @Inject constructor (private val db : AppDatabase) : V
         }
     }
 
+    fun cancelImport() {
+        _preview.value = emptyList()
+        _importResult.value = null
+        _statusText.value = "Impor dibatalkan. File dilepaskan."
+        _busy.value = false
+    }
 }

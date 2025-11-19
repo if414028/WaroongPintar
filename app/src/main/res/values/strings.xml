@@ -40,6 +40,11 @@
     <string name="progress_loading">Mohon Tunggu</string>
     <string name="progress_loading_desc">Sedang mengambil data dari server ...</string>
     <string name="error_loading">Gagal Mendapatkan Data</string>
-    <string name="errir_loading_desc">Gagal mengambil data dari server</string>
+    <string name="error_loading_desc">Gagal mengambil data dari server</string>
     <string name="import_to_db">Impor ke Database</string>
+    <string name="bulk_upload_hint">Baris error otomatis dilewati saat impor.</string>
+
+    <string name="cancel">Batalkan</string>
+    <string name="ok">OK!</string>
+    <string name="success_import">Import Berhasil!</string>
 </resources>
