@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="isError"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top App Bar -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingTop="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <ImageView
+                android:id="@+id/ic_back"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_4sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Home icon circle -->
+            <FrameLayout
+                android:id="@+id/ic_profile"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@drawable/bg_circle_pink_gradient"
+                app:layout_constraintStart_toEndOf="@id/ic_back"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_user"
+                    app:tint="@color/wp_white" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:fontFamily="@font/proximanova_bold"
+                android:text="@string/profile"
+                android:textColor="@color/wp_on_surface"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@id/ic_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_profile"
+                app:layout_constraintTop_toTopOf="@id/ic_profile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+
+            <!-- Two-column canvas -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Vertical guideline to split columns (38% / 62%) -->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.38" />
+
+                <!-- ===== LEFT COLUMN : Identity & Account ===== -->
+                <LinearLayout
+                    android:id="@+id/leftColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="vertical"
+                    android:paddingEnd="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- Profile Header Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        app:cardBackgroundColor="@color/wp_info_light"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:strokeColor="@color/wp_info">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_8sdp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/avatar"
+                                android:layout_width="@dimen/_42sdp"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_user"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                                app:strokeWidth="0dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvStoreName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Toko Grosir Makmur"
+                                    android:textColor="@color/text_black"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvEmail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="owner@toko-makmur.id"
+                                    android:textColor="@color/wp_textSecondary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnEditProfile"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:background="@drawable/bg_button_gradient_circle"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="@string/edit_profile"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:textStyle="bold"
+                                    app:backgroundTint="@null"
+                                    app:icon="@drawable/ic_edit"
+                                    app:iconGravity="textStart"
+                                    app:iconSize="@dimen/_10sdp"
+                                    app:rippleColor="@android:color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Account Info Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardAccountInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginBottom="16dp"
+                        app:cardBackgroundColor="@color/wp_info_light"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:strokeColor="@color/wp_info">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/divider_inset"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+
+                            <!-- Row -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_store" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="3"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Nama Toko"
+                                    android:textColor="@color/wp_textSecondary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <TextView
+                                    android:id="@+id/tvStoreNameValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Toko Grosir Makmur"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp"
+                                android:weightSum="10">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_user" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="3"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Nama Pemilik"
+                                    android:textColor="@color/wp_textSecondary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <TextView
+                                    android:id="@+id/tvOwnerNameValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Budi Santoso"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp"
+                                android:weightSum="10">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_phone" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="3"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Nomor HP"
+                                    android:textColor="@color/wp_textSecondary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <TextView
+                                    android:id="@+id/tvPhoneValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4sdp"
+                                    android:layout_weight="6"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="0812-3456-7890"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ===== RIGHT COLUMN : Subscription + Menus ===== -->
+                <LinearLayout
+                    android:id="@+id/rightColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- Subscription Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardSubscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        app:cardBackgroundColor="@color/wp_info_light"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:strokeColor="@color/wp_info">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/_16sdp"
+                            android:paddingTop="@dimen/_6sdp"
+                            android:paddingEnd="@dimen/_16sdp"
+                            android:paddingBottom="@dimen/_8sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_16sdp"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_verified" />
+
+                                <TextView
+                                    android:id="@+id/tvSubStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_2sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Subscription Aktif"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipPlan"
+                                    style="@style/Widget.Material3.Chip.Assist"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp199K/bulan"
+                                    android:textColor="@color/wp_info"
+                                    android:textSize="@dimen/_7ssp"
+                                    app:chipStrokeColor="@color/wp_info" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvNextBilling"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/proxima_nova"
+                                android:text="Berikutnya: 30 Sep 2025"
+                                android:textColor="@color/wp_textSecondary"
+                                android:textSize="@dimen/_8ssp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnManageBilling"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:background="@drawable/bg_button_gradient_circle"
+                                android:text="Kelola Tagihan"
+                                android:textSize="@dimen/_8ssp"
+                                android:textStyle="bold"
+                                app:backgroundTint="@null"
+                                app:icon="@drawable/ic_receipt"
+                                app:iconGravity="textStart"
+                                app:iconSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Menu List (Tiles) -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardMenus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        app:cardBackgroundColor="@color/wp_info_light"
+                        app:cardCornerRadius="@dimen/_16sdp"
+                        app:strokeColor="@color/wp_info">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/divider_inset"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+
+                            <!-- Item -->
+                            <LinearLayout
+                                android:id="@+id/rowChangePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_change_password" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Ganti Password"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
+                                    android:src="@drawable/ic_chevron_right" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowPaymentMethod"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_wallet" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Metode Pembayaran"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
+                                    android:src="@drawable/ic_chevron_right" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowInvoiceHistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_order_history" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Riwayat Tagihan"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
+                                    android:src="@drawable/ic_chevron_right" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowSettings"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_8sdp"
+                                android:paddingEnd="@dimen/_16sdp"
+                                android:paddingBottom="@dimen/_8sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_setting" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/proxima_nova"
+                                    android:text="Pengaturan"
+                                    android:textColor="@color/wp_textPrimary"
+                                    android:textSize="@dimen/_8ssp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_8sdp"
+                                    android:layout_height="@dimen/_8sdp"
+                                    android:src="@drawable/ic_chevron_right" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Logout -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_26sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:background="@drawable/bg_button_gradient_error_circle"
+                        android:fontFamily="@font/proxima_nova"
+                        android:text="@string/action_logout"
+                        android:textColor="@color/wp_white"
+                        android:textSize="@dimen/_8ssp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:icon="@drawable/ic_logout"
+                        app:iconGravity="textStart"
+                        app:iconSize="@dimen/_10sdp" />
+                </LinearLayout>
+
+                <!-- Bottom spacing -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rightColumn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Layout Progress -->
+        <LinearLayout
+            android:id="@+id/ly_progress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/wp_surface"
+            android:gravity="center"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE, default = gone}"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/proxima_nova"
+                android:text="@string/progress_loading"
+                android:textAlignment="center"
+                android:textColor="@color/wp_textPrimary"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:text="@string/progress_loading_desc"
+                android:textAlignment="center"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_8ssp" />
+
+        </LinearLayout>
+
+        <!-- Layout Progress -->
+        <LinearLayout
+            android:id="@+id/ly_error"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/wp_surface"
+            android:gravity="center"
+            android:visibility="@{isError ? View.VISIBLE : View.GONE, default = gone}"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+
+            <ImageView
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_error"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/proxima_nova"
+                android:text="@string/error_loading"
+                android:textAlignment="center"
+                android:textColor="@color/wp_textPrimary"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:text="@string/error_loading_desc"
+                android:textAlignment="center"
+                android:textColor="@color/wp_textSecondary"
+                android:textSize="@dimen/_8ssp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

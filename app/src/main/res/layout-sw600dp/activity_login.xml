@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.nesher.waroongpintar.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wp_background">
+
+        <!-- Panel kiri: brand -->
+        <FrameLayout
+            android:id="@+id/leftPanel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_wp_left_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Logo/brand -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="48dp"
+                android:paddingEnd="48dp">
+
+                <TextView
+                    android:id="@+id/appName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_nova"
+                    android:text="WaroongPintar"
+                    android:textColor="@color/wp_onPrimary"
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tagline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_nova"
+                    android:text="Elevate your Point of Sales"
+                    android:textColor="@color/wp_onPrimary_70"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="top|start"
+                android:layout_margin="@dimen/_4sdp"
+                android:alpha="0.25"
+                android:src="@drawable/ic_wp_dots"
+                app:tint="@color/wp_onPrimary" />
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/_4sdp"
+                android:alpha="0.2"
+                android:src="@drawable/ic_wp_dots" />
+
+        </FrameLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/wp_divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Panel kanan: form login -->
+        <ScrollView
+            android:id="@+id/rightPanel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                <!-- Company Logo -->
+                <ImageView
+                    android:id="@+id/ic_company_logo"
+                    android:layout_width="@dimen/_56sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/company_logo" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_48sdp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:text="Masuk"
+                    android:textColor="@color/wp_textPrimary"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold" />
+
+                <!-- Username -->
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/bg_edittext_outline"
+                    android:fontFamily="@font/proxima_nova"
+                    android:hint="username"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:text="@={vm.email}"
+                    android:textSize="@dimen/_8ssp"
+                    android:textStyle="bold" />
+
+                <!-- Password -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp">
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_edittext_outline"
+                        android:fontFamily="@font/proxima_nova"
+                        android:hint="password"
+                        android:inputType="textPassword"
+                        android:paddingStart="@dimen/_12sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@={vm.password}"
+                        android:textSize="@dimen/_8ssp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/ic_toggle_password"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_hide" />
+
+                </FrameLayout>
+
+                <!-- Ingat saya + Lupa kata sandi -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_remember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova"
+                        android:text="Ingat Saya"
+                        android:textColor="@color/wp_textSecondary"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_forgot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/btn_forgot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova"
+                        android:padding="@dimen/_4sdp"
+                        android:text="Lupa Kata Sandi?"
+                        android:textColor="@color/wp_primary"
+                        android:textSize="@dimen/_8ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Tombol Masuk -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/bg_button_gradient_circle"
+                    android:elevation="@dimen/_4sdp"
+                    android:enabled="@{vm.loading ? false : true}"
+                    android:fontFamily="@font/proxima_nova"
+                    android:onClick="@{() -> vm.onLoginClicked()}"
+                    android:padding="@dimen/_4sdp"
+                    android:text="Masuk"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_8ssp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:rippleColor="@android:color/white" />
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

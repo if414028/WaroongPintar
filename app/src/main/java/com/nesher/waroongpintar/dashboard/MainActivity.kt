@@ -4,6 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nesher.waroongpintar.R
@@ -26,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(bottom = sb.bottom)
+            insets
+        }
 
         setupLayout()
     }
@@ -60,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupMenuAdapter() {
-        binding.rvMenu.layoutManager = GridLayoutManager(applicationContext, 6)
+        binding.rvMenu.layoutManager = GridLayoutManager(applicationContext, 7)
         adapter =
             SimpleRecyclerAdapter<ModuleView>(moduleList, R.layout.view_menu_tile) { holder, item ->
                 val itemBinding: ViewMenuTileBinding = holder.layoutBinding as ViewMenuTileBinding
@@ -80,6 +91,7 @@ class MainActivity : AppCompatActivity() {
 
                         else -> Intent(applicationContext, MainActivity::class.java)
                     }
+                    startActivity(intent)
                 }
             }
         binding.rvMenu.adapter = adapter

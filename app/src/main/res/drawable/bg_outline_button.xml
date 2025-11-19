@@ -3,13 +3,13 @@
     android:shape="rectangle">
 
     <!-- Warna background putih -->
-    <solid android:color="@android:color/transparent"/>
+    <solid android:color="@android:color/transparent" />
 
     <!-- Border biru -->
     <stroke
         android:width="2dp"
-        android:color="#2196F3"/> <!-- Ganti sesuai warna biru yang diinginkan -->
+        android:color="@color/wp_info" /> <!-- Ganti sesuai warna biru yang diinginkan -->
 
     <!-- Sudut melengkung -->
-    <corners android:radius="50dp"/>
+    <corners android:radius="50dp" />
 </shape>

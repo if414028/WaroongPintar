@@ -11,6 +11,7 @@
     <color name="wp_info">#2FA7F9</color>
     <color name="wp_info_light">#EAF1F8</color>
     <color name="wp_onInfo">#FFFFFF</color>
+    <color name="wp_light_blue">#D5EDFE</color>
 
     <!-- PRIMARY / WHITE -->
     <color name="wp_white">#FFFFFF</color>
@@ -23,6 +24,9 @@
     <!-- ACCENT / GREEN -->
     <color name="wp_success">#43B049</color>
     <color name="wp_onSuccess">#FFFFFF</color>
+    <color name="wp_light_green">#E6F7F0</color>
+    <color name="wp_danger">#E44E4E</color>
+    <color name="wp_light_red">#FCECEC</color>
 
     <!-- WARNING / YELLOW -->
     <color name="wp_warning">#F9C418</color>

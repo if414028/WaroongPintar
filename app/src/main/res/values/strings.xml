@@ -9,10 +9,42 @@
     <string name="product_catalogue">Katalog Produk</string>
     <string name="point_of_sales">Point of Sales</string>
     <string name="orders">Pesanan</string>
+    <string name="bulk_upload">Bulk Upload Product</string>
+    <string name="bulk_upload_desc">Impor produk dari file CSV. Periksa pratinjau, validasi, lalu simpan ke database.</string>
+    <string name="upload_file">Upload File CSV</string>
+    <string name="upload_file_format">Format kolom: Nama, Kategori, Harga, Stok, Satuan, Barcode, SKU, Pajak%</string>
+    <string name="choose_file">Pilih File CSV</string>
+    <string name="review_data">Pratinjau Data</string>
+    <string name="review_data_desc">Menampilkan 5 dari 120 baris</string>
+    <string name="rules_title">Aturan Validasi</string>
+    <string-array name="rules">
+        <item>Nama wajib, min. 3 karakter</item>
+        <item>Harga numerik ≥ 0</item>
+        <item>Stok numerik ≥ 0</item>
+        <item>Kategori harus yang terdaftar</item>
+        <item>Barcode opsional, unik</item>
+    </string-array>
+    <string name="tips_title">Tips CSV</string>
+    <string-array name="tips">
+        <item>Gunakan delimiter koma "," atau titik koma ";"</item>
+        <item>Encoding UTF-8, header baris pertama</item>
+        <item>Hindari formula; ekspor sebagai nilai</item>
+    </string-array>
 
     <string name="search_product">Cari Produk</string>
 
     <string name="edit_profile">Edit Profile</string>
     <string name="action_logout">Logout</string>
     <string name="profile">Profil</string>
+
+    <string name="progress_loading">Mohon Tunggu</string>
+    <string name="progress_loading_desc">Sedang mengambil data dari server ...</string>
+    <string name="error_loading">Gagal Mendapatkan Data</string>
+    <string name="error_loading_desc">Gagal mengambil data dari server</string>
+    <string name="import_to_db">Impor ke Database</string>
+    <string name="bulk_upload_hint">Baris error otomatis dilewati saat impor.</string>
+
+    <string name="cancel">Batalkan</string>
+    <string name="ok">OK!</string>
+    <string name="success_import">Import Berhasil!</string>
 </resources>

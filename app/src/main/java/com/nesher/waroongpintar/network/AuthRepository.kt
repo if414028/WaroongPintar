@@ -1,7 +1,7 @@
 package com.nesher.waroongpintar.network
 
-import com.nesher.waroongpintar.model.Profile
-import com.nesher.waroongpintar.model.Subscription
+import com.nesher.waroongpintar.data.model.Profile
+import com.nesher.waroongpintar.data.model.Subscription
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email

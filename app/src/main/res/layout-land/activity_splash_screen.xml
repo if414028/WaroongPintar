@@ -1,67 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_wp_left_gradient">
+<layout>
 
-    <ImageView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_margin="@dimen/_4sdp"
-        android:alpha="0.25"
-        android:src="@drawable/ic_wp_dots"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/wp_onPrimary" />
-
-    <ImageView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/_4sdp"
-        android:alpha="0.2"
-        android:src="@drawable/ic_wp_dots"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:background="@drawable/bg_wp_left_gradient">
 
-        <TextView
-            android:id="@+id/appName"
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_margin="@dimen/_4sdp"
+            android:alpha="0.25"
+            android:src="@drawable/ic_wp_dots"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/wp_onPrimary" />
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/_4sdp"
+            android:alpha="0.2"
+            android:src="@drawable/ic_wp_dots"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:text="WaroongPintar"
+                android:textAlignment="center"
+                android:textColor="@color/wp_onPrimary"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tagline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:text="Elevate your Point of Sales"
+                android:textAlignment="center"
+                android:textColor="@color/wp_onPrimary_70"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova"
-            android:text="WaroongPintar"
-            android:textAlignment="center"
-            android:textColor="@color/wp_onPrimary"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold" />
+            android:layout_margin="@dimen/_16sdp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/company_logo_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tagline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova"
-            android:text="Elevate your Point of Sales"
-            android:textAlignment="center"
-            android:textColor="@color/wp_onPrimary_70"
-            android:textSize="@dimen/_10ssp" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_16sdp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/company_logo_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

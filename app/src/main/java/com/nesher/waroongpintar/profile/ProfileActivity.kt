@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -24,8 +27,20 @@ class ProfileActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         binding.lifecycleOwner = this
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(bottom = sb.bottom)
+            insets
+        }
+
         setupLayout()
         observeVm()
+        loadProfile()
+    }
+
+    private fun loadProfile() {
+        binding.isLoading = true
+        binding.isError = false
         viewModel.loadProfile()
     }
 
@@ -45,16 +60,22 @@ class ProfileActivity : AppCompatActivity() {
     private fun observeVm() {
         viewModel.loading.observe(this) { isLoading ->
             binding.btnLogout.isEnabled = !isLoading
-            // tampilkan progress jika punya
-            // binding.progressBar.isVisible = isLoading
+            binding.isLoading = isLoading
+            binding.isError = false
         }
 
         viewModel.error.observe(this) { msg ->
-            msg?.let { Toast.makeText(this, it, Toast.LENGTH_LONG).show() }
+            msg?.let { binding.tvErrorMessage.text = it }
+
+            binding.isError = true
+            binding.isLoading = false
         }
 
         viewModel.success.observe(this) { ok ->
             if (ok == true) {
+                binding.isError = false
+                binding.isLoading = false
+
                 goToLoginAndClearBackstack()
                 viewModel.consumeSuccess()
             }

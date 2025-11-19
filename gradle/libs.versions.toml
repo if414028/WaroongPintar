@@ -19,8 +19,10 @@ coroutines = "1.8.1"
 serialization = "1.7.3"
 
 # Room & DataStore
-room = "2.6.1"
-datastore = "1.1.1"
+room = "2.8.1"
+datastore = "1.1.7"
+paging = "3.3.6"
+sqlite = "2.6.1"
 
 # Firebase
 firebase-bom = "34.1.0"
@@ -44,6 +46,12 @@ supabase = "3.2.3" # check newest version on GitHub: https://github.com/supabase
 ktor = "3.3.0"
 desugar = "2.1.5"
 
+# Hilt
+hilt = "2.57.2"
+javapoet = "1.13.0"
+
+# Kotlin CSV
+kotlin-csv = "1.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -74,6 +82,9 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-paging  = { module = "androidx.room:room-paging",  version.ref = "room" }
+sqlite-ktx   = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqlite" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 
@@ -105,6 +116,13 @@ desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", ver
 # Serialization
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 
+# Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
+
+# Kotlin CSV
+kotlin-csv-jvm = { group = "com.github.doyaaaaaken", name = "kotlin-csv-jvm", version.ref = "kotlin-csv" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -113,4 +131,6 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kapt = { id = "org.jetbrains.kotlin.kapt" }
 

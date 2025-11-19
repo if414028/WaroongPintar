@@ -140,7 +140,7 @@
                     android:paddingEnd="@dimen/_12sdp"
                     android:paddingBottom="@dimen/_8sdp"
                     android:text="@={vm.email}"
-                    android:textSize="@dimen/_8ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <!-- Password -->
                 <FrameLayout
@@ -161,7 +161,7 @@
                         android:paddingEnd="@dimen/_12sdp"
                         android:paddingBottom="@dimen/_8sdp"
                         android:text="@={vm.password}"
-                        android:textSize="@dimen/_8ssp" />
+                        android:textSize="@dimen/_12ssp" />
 
                     <ImageView
                         android:id="@+id/ic_toggle_password"
@@ -189,7 +189,7 @@
                         android:fontFamily="@font/proxima_nova"
                         android:text="Ingat Saya"
                         android:textColor="@color/wp_textSecondary"
-                        android:textSize="@dimen/_8ssp" />
+                        android:textSize="@dimen/_10ssp" />
 
                     <TextView
                         android:id="@+id/tv_forgot"
@@ -207,7 +207,7 @@
                         android:padding="@dimen/_4sdp"
                         android:text="Lupa Kata Sandi?"
                         android:textColor="@color/wp_primary"
-                        android:textSize="@dimen/_8ssp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/bg_button_gradient"
+                    android:background="@drawable/bg_button_gradient_circle"
                     android:elevation="@dimen/_4sdp"
                     android:enabled="@{vm.loading ? false : true}"
                     android:fontFamily="@font/proxima_nova"
@@ -225,7 +225,7 @@
                     android:padding="@dimen/_4sdp"
                     android:text="Masuk"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_8ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:rippleColor="@android:color/white" />

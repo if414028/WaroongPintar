@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nesher.waroongpintar.App
-import com.nesher.waroongpintar.model.Profile
-import com.nesher.waroongpintar.model.Subscription
+import com.nesher.waroongpintar.data.model.Profile
+import com.nesher.waroongpintar.data.model.Subscription
 import com.nesher.waroongpintar.network.AuthRepository
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -95,7 +95,6 @@ class ProfileViewModel(private val repo: AuthRepository = AuthRepository((App.in
                     nextBillingLabel = "-"
                 ))
             } else {
-                // gagal muat subscription tidak harus block UI
                 subscription.postValue(SubscriptionUi(
                     statusText = "Tidak diketahui",
                     planLabel = "-",
