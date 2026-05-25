@@ -22,7 +22,6 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         binding.lifecycleOwner = this
@@ -67,8 +66,10 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.error.observe(this) { msg ->
             msg?.let { binding.tvErrorMessage.text = it }
 
-            binding.isError = true
-            binding.isLoading = false
+            if (msg != null) {
+                binding.isError = true
+                binding.isLoading = false
+            }
         }
 
         viewModel.success.observe(this) { ok ->

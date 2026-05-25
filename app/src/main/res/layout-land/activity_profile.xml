@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="isError"
+            type="Boolean" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/root"
@@ -110,7 +124,7 @@
 
                     <!-- Profile Header Card -->
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/cardHeader"
+                        android:id="@+id/card_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_16sdp"
@@ -183,7 +197,7 @@
 
                     <!-- Account Info Card -->
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/cardAccountInfo"
+                        android:id="@+id/card_store"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_16sdp"
@@ -331,7 +345,7 @@
 
                     <!-- Subscription Card -->
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/cardSubscription"
+                        android:id="@+id/card_subscription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
@@ -412,7 +426,7 @@
 
                     <!-- Menu List (Tiles) -->
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/cardMenus"
+                        android:id="@+id/card_menu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_16sdp"

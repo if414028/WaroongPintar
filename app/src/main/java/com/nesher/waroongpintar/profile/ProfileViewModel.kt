@@ -3,7 +3,6 @@ package com.nesher.waroongpintar.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nesher.waroongpintar.App
 import com.nesher.waroongpintar.data.model.Profile
 import com.nesher.waroongpintar.data.model.Subscription
 import com.nesher.waroongpintar.network.AuthRepository
@@ -29,7 +28,7 @@ data class SubscriptionUi(
     val nextBillingLabel: String
 )
 
-class ProfileViewModel(private val repo: AuthRepository = AuthRepository((App.instance).supabase)) :
+class ProfileViewModel(private val repo: AuthRepository = AuthRepository()) :
     ViewModel() {
 
     val loading = MutableLiveData(false)
@@ -41,7 +40,6 @@ class ProfileViewModel(private val repo: AuthRepository = AuthRepository((App.in
 
     fun onLogoutClicked() {
         loading.value = true
-        error.value = null
 
         viewModelScope.launch {
             val res = repo.signOut()
@@ -63,7 +61,6 @@ class ProfileViewModel(private val repo: AuthRepository = AuthRepository((App.in
 
     fun loadProfile() {
         loading.value = true
-        error.value = null
         viewModelScope.launch {
             val res = repo.fetchMyProfileWithStore()
             if (res.isSuccess) {

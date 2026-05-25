@@ -14,7 +14,7 @@ import com.nesher.waroongpintar.R
 import com.nesher.waroongpintar.dashboard.MainActivity
 import com.nesher.waroongpintar.databinding.ActivitySplashScreenBinding
 import com.nesher.waroongpintar.login.LoginActivity
-import io.github.jan.supabase.auth.auth
+import com.nesher.waroongpintar.network.AuthRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,7 +24,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
 
-    private val supabase by lazy { (application as App).supabase }
+    private val authRepository by lazy {
+        val app = application as App
+        AuthRepository(app.apiClient, app.userConfiguration)
+    }
 
     @Volatile
     private var navigated = false
@@ -42,14 +45,9 @@ class SplashScreenActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val dest = withContext(Dispatchers.IO) {
-                // 1) cek ada session lokal?
-                val session = supabase.auth.currentSessionOrNull()
-                if (session == null) return@withContext Dest.Login
+                if (!authRepository.isLoggedIn()) return@withContext Dest.Login
 
-                // 2) verifikasi ke server (butuh JWT)
-                val ok = runCatching {
-                    supabase.auth.retrieveUser(session.accessToken)
-                }.isSuccess
+                val ok = authRepository.validateSession().isSuccess
 
                 if (ok) Dest.Dashboard else Dest.Login
             }

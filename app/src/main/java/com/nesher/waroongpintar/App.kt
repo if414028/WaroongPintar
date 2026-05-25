@@ -1,11 +1,10 @@
 package com.nesher.waroongpintar
 
 import android.app.Application
+import com.nesher.waroongpintar.network.ApiClient
+import com.nesher.waroongpintar.utils.UserConfiguration
 import dagger.hilt.android.HiltAndroidApp
-import io.github.jan.supabase.SupabaseClient
-import io.github.jan.supabase.auth.Auth
-import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.postgrest.Postgrest
+import io.ktor.client.HttpClient
 
 @HiltAndroidApp
 class App: Application() {
@@ -15,21 +14,17 @@ class App: Application() {
             private set
     }
 
-    lateinit var supabase: SupabaseClient
+    lateinit var userConfiguration: UserConfiguration
+        private set
+
+    lateinit var apiClient: HttpClient
+        private set
 
     override fun onCreate() {
         super.onCreate()
         instance = this
 
-        supabase = createSupabaseClient(
-            supabaseUrl = BuildConfig.SUPABASE_URL,
-            supabaseKey = BuildConfig.SUPABASE_ANON_KEY
-        ) {
-            install(Auth) {
-                alwaysAutoRefresh = true
-                autoLoadFromStorage = true
-            }
-            install(Postgrest)
-        }
+        userConfiguration = UserConfiguration(this)
+        apiClient = ApiClient.create(userConfiguration)
     }
 }

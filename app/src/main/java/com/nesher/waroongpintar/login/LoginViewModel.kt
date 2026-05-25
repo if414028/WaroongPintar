@@ -3,11 +3,11 @@ package com.nesher.waroongpintar.login
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nesher.waroongpintar.App
+import com.nesher.waroongpintar.BuildConfig
 import com.nesher.waroongpintar.network.AuthRepository
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val repo: AuthRepository = AuthRepository((App.instance).supabase)) :
+class LoginViewModel(private val repo: AuthRepository = AuthRepository()) :
     ViewModel() {
 
     val email = MutableLiveData("")
@@ -44,6 +44,10 @@ class LoginViewModel(private val repo: AuthRepository = AuthRepository((App.inst
 
                     throwable?.message?.contains("Network", true) == true -> {
                         "Koneksi internet bermasalah"
+                    }
+
+                    BuildConfig.DEBUG && !throwable?.message.isNullOrBlank() -> {
+                        throwable?.message ?: "Login gagal, coba lagi"
                     }
 
                     else -> {

@@ -189,6 +189,7 @@
                         android:paddingBottom="@dimen/_16sdp">
 
                         <LinearLayout
+                            android:id="@+id/ly_drop_zone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_16sdp"
