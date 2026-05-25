@@ -2,11 +2,8 @@ package com.nesher.waroongpintar.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
@@ -29,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -43,9 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupLayout() {
         setupModuleView()
-        setupRevenueMetric()
-        setupOrdersMetric()
-        setupProductsMetric()
         setupMenuAdapter()
         binding.avatar.setOnClickListener { goToProfile() }
     }
@@ -55,23 +48,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun setupRevenueMetric() {
-        binding.cardRevenue.metricTitle.text = getString(R.string.total_revenue)
-        binding.cardRevenue.metricIcon.setImageResource(R.drawable.ic_rupiah)
-    }
-
-    private fun setupOrdersMetric() {
-        binding.cardOrders.metricTitle.text = getString(R.string.total_orders)
-        binding.cardOrders.metricIcon.setImageResource(R.drawable.ic_order)
-    }
-
-    private fun setupProductsMetric() {
-        binding.cardProducts.metricTitle.text = getString(R.string.total_products)
-        binding.cardProducts.metricIcon.setImageResource(R.drawable.ic_box)
-    }
-
     private fun setupMenuAdapter() {
-        binding.rvMenu.layoutManager = GridLayoutManager(applicationContext, 7)
         adapter =
             SimpleRecyclerAdapter<ModuleView>(moduleList, R.layout.view_menu_tile) { holder, item ->
                 val itemBinding: ViewMenuTileBinding = holder.layoutBinding as ViewMenuTileBinding

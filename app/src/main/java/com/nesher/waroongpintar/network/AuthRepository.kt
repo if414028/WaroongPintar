@@ -1,104 +1,95 @@
 package com.nesher.waroongpintar.network
 
+import com.nesher.waroongpintar.App
 import com.nesher.waroongpintar.data.model.Profile
 import com.nesher.waroongpintar.data.model.Subscription
-import io.github.jan.supabase.SupabaseClient
-import io.github.jan.supabase.auth.auth
-import io.github.jan.supabase.auth.providers.builtin.Email
-import io.github.jan.supabase.auth.user.UserInfo
-import io.github.jan.supabase.auth.user.UserSession
-import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.query.Columns
-import io.github.jan.supabase.postgrest.query.Order
+import com.nesher.waroongpintar.network.dto.LoginRequest
+import com.nesher.waroongpintar.network.dto.LoginResponse
+import com.nesher.waroongpintar.network.dto.PasswordResetRequest
+import com.nesher.waroongpintar.network.dto.SignUpRequest
+import com.nesher.waroongpintar.network.dto.UpdatePasswordRequest
+import com.nesher.waroongpintar.utils.UserConfiguration
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.patch
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 
 /**
- * Auth repository untuk Supabase v3.
+ * Auth repository untuk REST API.
  * Gunakan dari ViewModel dengan coroutine (viewModelScope).
  */
-class AuthRepository(private val client: SupabaseClient) {
+class AuthRepository(
+    private val client: HttpClient = App.instance.apiClient,
+    private val userConfiguration: UserConfiguration = App.instance.userConfiguration
+) {
 
-    /** Login email + password (v3) */
-    suspend fun signIn(email: String, password: String): Result<UserSession?> = runCatching {
-        client.auth.signInWith(Email) {
-            this.email = email
-            this.password = password
-        }                                                // signInWith(Email) + config lambda (v3) :contentReference[oaicite:2]{index=2}
-        client.auth.currentSessionOrNull()
+    /** Login email + password */
+    suspend fun signIn(email: String, password: String): Result<Unit> = runCatching {
+        val response = client.post("/api/login") {
+            setBody(LoginRequest(email = email, password = password))
+        }.body<LoginResponse>()
+
+        val data = response.data ?: error(response.message ?: "Login gagal")
+        if (!response.success || data.token.isBlank()) {
+            error(response.message ?: "Login gagal")
+        }
+
+        userConfiguration.saveLoginData(data)
+        Unit
     }
 
     /** Sign up email + password */
     suspend fun signUp(email: String, password: String): Result<Unit> = runCatching {
-        client.auth.signUpWith(Email) {
-            this.email = email
-            this.password = password
+        client.post("/auth/register") {
+            setBody(SignUpRequest(email = email, password = password))
         }
         Unit
     }
 
-    /**
-     * Kirim email reset password.
-     * NOTE: param di v3 adalah `redirectUrl` (bukan redirectTo).
-     * Pastikan redirectUrl terdaftar di Auth → Settings → Redirect URLs.
-     */
+    /** Kirim email reset password. */
     suspend fun sendPasswordReset(email: String, redirectUrl: String): Result<Unit> = runCatching {
-        client.auth.resetPasswordForEmail(
-            email = email,
-            redirectUrl = redirectUrl
-        )
+        client.post("/auth/password/reset") {
+            setBody(PasswordResetRequest(email = email, redirectUrl = redirectUrl))
+        }
+        Unit
     }
 
     /** Update password untuk user yang sudah login (step 2 setelah deep link) */
     suspend fun updatePassword(newPassword: String): Result<Unit> = runCatching {
-        client.auth.updateUser {
-            password = newPassword
+        client.patch("/auth/password") {
+            setBody(UpdatePasswordRequest(password = newPassword))
         }
+        Unit
     }
 
     /** Logout */
     suspend fun signOut(): Result<Unit> = runCatching {
-        client.auth.signOut()   // revoke & hapus session lokal
+        runCatching {
+            client.post("/auth/logout")
+        }
+        userConfiguration.clear()
         Unit
     }
 
     /** Fetch Profile data **/
     suspend fun fetchMyProfileWithStore(): Result<Profile> = runCatching {
-        val user = client.auth.currentUserOrNull() ?: error("Belum login")
-
-        client.postgrest["profiles"].select(
-            columns = Columns.raw(
-                """
-                id,user_name,user_fullname,email,phone,is_active,
-                store_users(
-                    is_primary,
-                    stores(id,store_name,store_address)
-                )
-            """.trimIndent()
-            )
-        ) {
-            filter { eq("id", user.id) }
-        }.decodeSingle<Profile>()
+        client.get("/auth/me").body<Profile>()
     }
 
     suspend fun fetchActiveSubscriptionForStore(storeId: String): Result<Subscription?> = runCatching {
-        val rows = client.postgrest["subscriptions"].select(
-            columns = Columns.raw("""
-            id,store_id,status,current_period_end,
-            plans(id,plan_name,price_monthly)
-        """.trimIndent())
-        ) {
-            filter {
-                eq("store_id", storeId)
-                eq("status", "active")
-            }
-            order(column = "current_period_end", order = Order.ASCENDING)
-            limit(1)
-        }.decodeList<Subscription>()
-        rows.firstOrNull()
+        client.get("/stores/$storeId/subscriptions/active").body<Subscription?>()
     }
 
     /** Helpers */
-    fun currentSession(): UserSession? = client.auth.currentSessionOrNull()
-    fun currentUser(): UserInfo? = client.auth.currentUserOrNull()
-    fun isLoggedIn(): Boolean = currentSession() != null
+    fun isLoggedIn(): Boolean = userConfiguration.isLoggedIn()
+
+    suspend fun validateSession(): Result<Unit> = runCatching {
+        fetchMyProfileWithStore().getOrThrow()
+        Unit
+    }.onFailure {
+        userConfiguration.clear()
+    }
 
 }

@@ -22,8 +22,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "SUPABASE_URL", "\"https://kqwodbifrlttalecablj.supabase.co\"")
-        buildConfigField("String", "SUPABASE_ANON_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtxd29kYmlmcmx0dGFsZWNhYmxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MDMzOTksImV4cCI6MjA3Mjk3OTM5OX0.ttQ2bTiHd3sGpM7nTjbT4c44liQlemLYYvihmU3sGHE\"")
+        buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.101:8000\"")
     }
 
     buildTypes {
@@ -112,13 +111,11 @@ dependencies {
     implementation(libs.intuit.sdp)
     implementation(libs.intuit.ssp)
 
-    // Supabase
-    implementation(platform(libs.supabase.bom))
-    implementation(libs.supabase.auth)
-    implementation(libs.supabase.postgrest)
-
     // Ktor client engine (pilih satu)
     implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
     //implementation(libs.ktor.client.okhttp)
 
     // Desugar (karena minSdk 24, bukan 26)

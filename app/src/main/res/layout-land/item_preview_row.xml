@@ -10,13 +10,13 @@
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/_12sdp"
         android:paddingTop="@dimen/_6sdp"
-        android:weightSum="10">
+        android:weightSum="14">
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
+            android:layout_weight="2"
             android:ellipsize="end"
             android:fontFamily="@font/proxima_nova"
             android:maxLines="1"
@@ -28,14 +28,13 @@
             android:id="@+id/tv_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_2sdp"
             android:layout_weight="2"
             android:ellipsize="end"
+            android:layout_marginStart="@dimen/_2sdp"
             android:fontFamily="@font/proxima_nova"
             android:maxLines="1"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
-            android:visibility="gone"
             tools:text="Minuman" />
 
         <TextView
@@ -48,7 +47,6 @@
             android:maxLines="1"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
-            android:visibility="gone"
             tools:text="Sosro" />
 
         <TextView
@@ -57,7 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:fontFamily="@font/proxima_nova"
-            android:visibility="gone"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
             tools:text="Rp. 24.000" />
@@ -70,7 +67,6 @@
             android:fontFamily="@font/proxima_nova"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
-            android:visibility="gone"
             tools:text="24" />
 
         <TextView
@@ -83,7 +79,6 @@
             android:maxLines="1"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
-            android:visibility="gone"
             tools:text="Pcs" />
 
         <TextView
@@ -96,7 +91,6 @@
             android:maxLines="1"
             android:textColor="@color/wp_textPrimary"
             android:textSize="@dimen/_10ssp"
-            android:visibility="gone"
             tools:text="1234567890" />
 
         <com.google.android.material.chip.Chip
@@ -104,9 +98,9 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:fontFamily="@font/proximanova_bold"
+            android:layout_weight="2"
             android:textAlignment="center"
+            android:fontFamily="@font/proximanova_bold"
             android:textSize="@dimen/_8ssp"
             app:chipCornerRadius="@dimen/_8sdp"
             app:chipStrokeWidth="@dimen/_1sdp"

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">WaroongPintar</string>
+    <string name="app_tagline">Elevate your Point of Sales</string>
 
     <string name="total_revenue">Total Pendapatan</string>
     <string name="total_orders">Total Pesanan</string>
@@ -43,6 +44,7 @@
     <string name="error_loading_desc">Gagal mengambil data dari server</string>
     <string name="import_to_db">Impor ke Database</string>
     <string name="bulk_upload_hint">Baris error otomatis dilewati saat impor.</string>
+    <string name="import_to_db_">Impor</string>
 
     <string name="cancel">Batalkan</string>
     <string name="ok">OK!</string>

@@ -46,7 +46,6 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_catalogue)
         binding.lifecycleOwner = this
 
@@ -151,7 +150,7 @@ class ProductCatalogueActivity : AppCompatActivity() {
 
         binding.rvProducts.apply {
             layoutManager =
-                GridLayoutManager(this@ProductCatalogueActivity, 5)
+                GridLayoutManager(this@ProductCatalogueActivity, 2)
             adapter = productAdapter
             setHasFixedSize(true)
         }

@@ -70,7 +70,6 @@ class BulkUploadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewModel = ViewModelProvider(this)[BulkUploadViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_bulk_upload)
 
@@ -263,6 +262,8 @@ class BulkUploadActivity : AppCompatActivity() {
                 binding.lyPreview.visibility = View.VISIBLE
                 binding.icFile.visibility = View.VISIBLE
                 binding.tvUploadDesc.text = selectedFileName ?: "-"
+                binding.lyDropZone.setBackgroundResource(R.drawable.bg_drop_zone_filled)
+
 
                 previewAdapter.updateMainData(rows.toMutableList())
             } else {
@@ -271,6 +272,7 @@ class BulkUploadActivity : AppCompatActivity() {
                 binding.lyPreview.visibility = View.GONE
                 binding.icFile.visibility = View.GONE
                 binding.tvUploadDesc.text = getString(R.string.upload_file)
+                binding.lyDropZone.setBackgroundResource(R.drawable.bg_drop_zone_dashed)
             }
         }
 
